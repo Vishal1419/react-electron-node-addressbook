@@ -13,7 +13,13 @@ const theme = createMuiTheme({
       main: '#f50057',
       dark: '#c51162',
       contrastText: '#fff',
-    },
+		},
+		print: {
+      light: '#F3E5F5',
+      main: '#9C27B0',
+      dark: '#7B1FA2',
+      contrastText: '#fff',
+		},
     excel: {
       light: '#E8F5E9',
       main: '#4CAF50',

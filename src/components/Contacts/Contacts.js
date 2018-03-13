@@ -7,6 +7,7 @@ import IconButton from 'material-ui/IconButton';
 import AddIcon from 'material-ui-icons/Add';
 import EditIcon from 'material-ui-icons/Edit';
 import DeleteIcon from 'material-ui-icons/Delete';
+import PrintIcon from 'material-ui-icons/Print';
 import SortUpArrow from 'material-ui-icons/ArrowDropUp';
 import SortDownArrow from 'material-ui-icons/ArrowDropDown';
 import Button from 'material-ui/Button';
@@ -15,6 +16,7 @@ import ReduxBlockUi from 'react-block-ui/redux';
 import Color from '../Color';
 import ExcelIcon from '../../assets/icons/excel';
 import PDFIcon from '../../assets/icons/pdf';
+import WifiIcon from '../../assets/icons/wifi';
 
 const Contacts = props => {
 	const columns = [
@@ -101,8 +103,26 @@ const Contacts = props => {
 								disabled={props.selectedContacts.length <= 0}
 								onClick={() => {}}
 							>
-								<DeleteIcon style={{ marginRight: 10 }} />
-								Sync with Firebase
+								<WifiIcon 
+									style={{ height: 24, width: 24, marginRight: 10 }} 
+									fill={props.selectedContacts.length <= 0 ? '#a6a6a6': '#fff'}
+								/>
+							Sync Online
+							</Button>
+						</Color>
+						<Color color="print">
+							<Button 
+								color="primary" 
+								variant="raised" 
+								style={{ margin: 10, marginTop: 6 }}
+								disabled={props.selectedContacts.length <= 0}
+								onClick={() => {}}
+							>
+								<PrintIcon 
+									style={{ height: 24, width: 24, marginRight: 10 }} 
+									fill={props.selectedContacts.length <= 0 ? '#a6a6a6': '#fff'}
+								/>
+								Print
 							</Button>
 						</Color>
 						<Button 
