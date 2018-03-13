@@ -12,9 +12,6 @@ import {
 	createContactFunction, 
 	updateContactFunction, 
 	deleteContactFunction, 
-	setSelectedContactsFunction,
-	addContactToSelectedContactsFunction,
-	removeContactFromSelectedContactsFunction
 } from '../../actions/ContactsActions';
 import ContactDetails from './ContactDetails';
 import ContactForm from './ContactForm';
@@ -40,6 +37,7 @@ class ContactsContainer extends Component {
 			columnToSort: '',
 			sortDirection: 'desc',
 			searchTerm: '',
+			selectedContacts: [],
 		}
 		this.selectAllContacts = this.selectAllContacts.bind(this);
 		this.selectContact = this.selectContact.bind(this);
@@ -69,18 +67,26 @@ class ContactsContainer extends Component {
 
 	selectAllContacts(event, checked, contacts) {
 		if (checked) {
-			this.props.setSelectedContacts(contacts);
+			this.setState({
+				selectedContacts: contacts
+			});
 		} else {
-			this.props.setSelectedContacts([]);
+			this.setState({
+				selectedContacts: []
+			});
 		}
 	}
 	
 	selectContact(event, contact) {
 		event.stopPropagation();
-		if (!this.props.selectedContacts.includes(contact)) {
-			this.props.addContactToSelectedContacts(contact);
+		if (!this.state.selectedContacts.includes(contact)) {
+			this.setState({
+				selectedContacts: [...this.state.selectedContacts, contact]
+			});
 		} else {
-			this.props.removeContactFromSelectedContacts(contact);
+			this.setState({
+				selectedContacts: [...this.state.selectedContacts.filter(c => c.id !== contact.id)]
+			});
 		}
 	}
 
@@ -180,11 +186,13 @@ class ContactsContainer extends Component {
 	}
 
 	onDeleteSelectedContacts() {
-		Promise.all(this.props.selectedContacts.map(contact => this.props.deleteContact(contact.id))).then(() => {
+		Promise.all(this.state.selectedContacts.map(contact => this.props.deleteContact(contact.id))).then(() => {
 			if (!this.props.contactsError) {
 				Toast.success('Selected contacts deleted', 'Success');
 				this.closeDialog();
-				this.props.setSelectedContacts([]);
+				this.setState({
+					selectedContacts: []
+				});
 			} else {
 				Toast.error(this.props.contactsError, 'Error');
 			}
@@ -231,7 +239,7 @@ class ContactsContainer extends Component {
 						)
 					}
 					selectedContacts={
-						this.props.selectedContacts.filter(
+						this.state.selectedContacts.filter(
 							contact => {
 								const sTerm = this.state.searchTerm.toLocaleLowerCase();
 								return contact.name.toLocaleLowerCase().includes(sTerm)
@@ -370,9 +378,6 @@ const mapDispatchToProps = dispatch => ({
 	createContact: (contact) => dispatch(createContactFunction(contact)),
 	updateContact: (contact) => dispatch(updateContactFunction(contact)),
 	deleteContact: (id) => dispatch(deleteContactFunction(id)),
-	setSelectedContacts: (contacts) => dispatch(setSelectedContactsFunction(contacts)),
-	addContactToSelectedContacts: (contact) => dispatch(addContactToSelectedContactsFunction(contact)),
-	removeContactFromSelectedContacts: (contact) => dispatch(removeContactFromSelectedContactsFunction(contact)),
 	dispatch,
 });
 

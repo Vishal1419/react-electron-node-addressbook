@@ -7,11 +7,14 @@ import IconButton from 'material-ui/IconButton';
 import AddIcon from 'material-ui-icons/Add';
 import EditIcon from 'material-ui-icons/Edit';
 import DeleteIcon from 'material-ui-icons/Delete';
-import SearchIcon from 'material-ui-icons/Search';
 import SortUpArrow from 'material-ui-icons/ArrowDropUp';
 import SortDownArrow from 'material-ui-icons/ArrowDropDown';
 import Button from 'material-ui/Button';
 import ReduxBlockUi from 'react-block-ui/redux';
+
+import Color from '../Color';
+import ExcelIcon from '../../assets/icons/excel';
+import PDFIcon from '../../assets/icons/pdf';
 
 const Contacts = props => {
 	const columns = [
@@ -28,6 +31,7 @@ const Contacts = props => {
 					</div>
 					<div style={{ marginTop: 4 }}>
 						<input
+							placeholder="Search..."
 							style={{ 
 								background: `url(${require('../../assets/icons/search.svg')})`, 
 								backgroundSize: '24px 24px',
@@ -44,6 +48,63 @@ const Contacts = props => {
 							value={props.searchTerm}
 							onChange={props.setSearchTerm}
 						/>
+						<Color color="excel">
+							<Button 
+								color="primary" 
+								variant="raised" 
+								style={{ margin: 10, marginTop: 6 }}
+								disabled={props.selectedContacts.length <= 0}
+								onClick={() => {}}
+							>
+								<ExcelIcon 
+									style={{ height: 24, width: 24, marginRight: 10 }} 
+									fill={props.selectedContacts.length <= 0 ? '#a6a6a6': '#fff'}
+								/>
+								Import from Excel
+							</Button>
+						</Color>
+						<Color color="excel">
+							<Button 
+								color="primary" 
+								variant="raised" 
+								style={{ margin: 10, marginTop: 6 }}
+								disabled={props.selectedContacts.length <= 0}
+								onClick={() => {}}
+							>
+								<ExcelIcon 
+									style={{ height: 24, width: 24, marginRight: 10 }} 
+									fill={props.selectedContacts.length <= 0 ? '#a6a6a6': '#fff'}
+								/>
+							Export to Excel
+							</Button>
+						</Color>
+						<Color color="pdf">
+							<Button 
+								color="primary" 
+								variant="raised" 
+								style={{ margin: 10, marginTop: 6 }}
+								disabled={props.selectedContacts.length <= 0}
+								onClick={() => {}}
+							>
+								<PDFIcon 
+									style={{ height: 24, width: 24, marginRight: 10 }} 
+									fill={props.selectedContacts.length <= 0 ? '#a6a6a6': '#fff'}
+								/>
+								Export to PDF
+							</Button>
+						</Color>
+						<Color color="firebase">
+							<Button 
+								color="primary" 
+								variant="raised" 
+								style={{ margin: 10, marginTop: 6 }}
+								disabled={props.selectedContacts.length <= 0}
+								onClick={() => {}}
+							>
+								<DeleteIcon style={{ marginRight: 10 }} />
+								Sync with Firebase
+							</Button>
+						</Color>
 						<Button 
 							color="secondary" 
 							variant="raised" 
@@ -52,7 +113,7 @@ const Contacts = props => {
 							onClick={props.deleteSelectedContacts}
 						>
 							<DeleteIcon style={{ marginRight: 10 }} />
-							Delete Selected
+							Delete
 						</Button>
 						<Button 
 							color="primary" 

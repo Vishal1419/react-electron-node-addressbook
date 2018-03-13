@@ -3,7 +3,6 @@ import RequestStates from '../util/request-states';
 
 const initialState = {
     contacts: [],
-    selectedContacts: [],
     requestState: RequestStates.init,
     contactsError: null,
 };
@@ -89,24 +88,6 @@ export default function contacts(state = initialState, action) {
                 requestState: RequestStates.failure,
                 contactsError: action.payload,
             };   
-        case types.SET_SELECTED_CONTACTS:
-            return {
-                ...state,
-                selectedContacts: action.payload,
-                contactsError: null,
-            };
-        case types.ADD_CONTACT_TO_SELECTED_CONTACTS:
-            return {
-                ...state,
-                selectedContacts: [...state.selectedContacts, action.payload],
-                contactsError: null,
-            };
-        case types.REMOVE_CONTACT_FROM_SELECTED_CONTACTS:
-            return {
-                ...state,
-                selectedContacts: [...state.selectedContacts.filter(contact => contact.id !== action.payload.id)],
-                contactsError: null,
-            };
         default:
             return state;
     }

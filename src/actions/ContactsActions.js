@@ -42,18 +42,3 @@ export const deleteContactFunction = (id) => createAsyncRequest({
         request: types.DELETE_CONTACT_LOADING
     }
 });
-
-export const setSelectedContactsFunction = (contacts) => ({
-    type: types.SET_SELECTED_CONTACTS,
-    payload: contacts,
-});
-
-export const addContactToSelectedContactsFunction = (contact) => ({
-    type: types.ADD_CONTACT_TO_SELECTED_CONTACTS,
-    payload: contact,
-});
-
-export const removeContactFromSelectedContactsFunction = (contact) => ({
-    type: types.REMOVE_CONTACT_FROM_SELECTED_CONTACTS,
-    payload: contact,
-});
