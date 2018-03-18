@@ -10,12 +10,12 @@ const ContactDetails = props => {
     return (
         <ReduxBlockUi tag="div" blocking={loading}>
             <div className="contact-name">{name}</div>
-            <div className="side-by-side-space-between-end">
-                <div className="side-by-side-space-between-end">
+            <div className="side-by-side-space_between-end">
+                <div className="side-by-side-space_between-end">
                     <PhoneIcon className="contact-detail-icon" />
                     <span className="contact-phone">{mobileNo}</span>
                 </div>
-                <div className="side-by-side-space-between-end">
+                <div className="side-by-side-space_between-end">
                     {email && <EmailIcon className="contact-detail-icon" />}
                     <span>{email ? email : ''}</span>
                 </div>

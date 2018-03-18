@@ -264,104 +264,106 @@ class ContactsContainer extends Component {
 					sortDirection={this.state.sortDirection}
 					setSearchTerm={this.setSearchTerm}
 				/>
-				<Dialog
-					open={this.state.showContactDetails}
-					onClose={this.closeDialog}
-					transition={this.Transition}
-					aria-labelledby="contact-details-dialog-title"
-					aria-describedby="contact-details-dialog-description"
-				>
-					{/* <DialogTitle id="contact-details-dialog-title">Contact Details</DialogTitle> */}
-					<DialogContent>
-						<div id="contact-details-dialog-description">
-							<ContactDetails
-								loading={this.props.loading} 
-								currentContact={this.state.currentContact}
-							/>
-						</div>
-					</DialogContent>
-					<DialogActions>
-						<Button onClick={this.closeDialog} color="primary">
-							Close
-						</Button>
-					</DialogActions>
-				</Dialog>
-				<Dialog
-					open={this.state.showAddContact || this.state.showEditContact}
-					onClose={this.closeDialog}
-					transition={this.Transition}
-					aria-labelledby="add-edit-contact-dialog-title"
-					aria-describedby="add-edit-contact-dialog-description"
-				>
-					<DialogTitle id="add-edit-contact-dialog-title">
-						{ this.state.showAddContact ? 'Add' : 'Edit' } Contact
-					</DialogTitle>
-					<DialogContent>
-						<div id="add-edit-contact-dialog-description">
-							<ContactForm
-								loading={this.props.loading}
-								initialValues={this.state.showAddContact ? {} : this.state.currentContact}
-								currentContact={this.state.currentContact}
-								isEditing={this.state.showEditContact}
-								contacts={this.props.contacts}
-								onSaveContact={this.onSaveContact}
-							/>
-						</div>
-					</DialogContent>
-					<DialogActions>
-						<Button onClick={this.closeDialog}>
-							Close
-						</Button>
-						<Button 
-							onClick={() => this.props.dispatch(submit('ContactForm'))}
-							color="primary" 
-							variant="raised"
-						>
-							{this.state.showAddContact ? 'Save' : 'Update' }
-						</Button>
-					</DialogActions>
-				</Dialog>
-				<Dialog
-					open={this.state.showDeleteContact || this.state.showDeleteSelectedContacts}
-					onClose={this.closeDialog}
-					transition={this.Transition}
-					aria-labelledby="delete-contact-dialog-title"
-					aria-describedby="delete-contact-dialog-description"
-				>
-					<DialogTitle id="delete-contact-dialog-title">
-						{`Delete contact${this.state.showDeleteSelectedContacts ? 's' : ''}`}
-					</DialogTitle>
-					<DialogContent>
-						<div id="delete-contact-dialog-description">
-							<ReduxBlockUi tag="div" blocking={this.props.loading}>
-								{
-									this.state.showDeleteSelectedContacts
-									? <span className="delete-selected-dialog-body">Delete selected contacts?</span>
-									: <span>
-											<span className="delete-dialog-body">Are you sure?</span> <br />
-											<span>Delete {this.state.currentContact.name}?</span>
-										</span>
-								}
-							</ReduxBlockUi>
-						</div>
-					</DialogContent>
-					<DialogActions>
-						<Button onClick={this.closeDialog} color="primary">
-							Close
-						</Button>
-						<Button 
-							onClick={
-								this.state.showDeleteSelectedContacts 
-								? this.onDeleteSelectedContacts
-								: this.onDeleteContact
-							} 
-							color="secondary" 
-							variant="raised"
-						>
-							Delete
-						</Button>
-					</DialogActions>
-				</Dialog>
+				<div id="react-no-print">
+					<Dialog
+						open={this.state.showContactDetails}
+						onClose={this.closeDialog}
+						transition={this.Transition}
+						aria-labelledby="contact-details-dialog-title"
+						aria-describedby="contact-details-dialog-description"
+					>
+						{/* <DialogTitle id="contact-details-dialog-title">Contact Details</DialogTitle> */}
+						<DialogContent>
+							<div id="contact-details-dialog-description">
+								<ContactDetails
+									loading={this.props.loading} 
+									currentContact={this.state.currentContact}
+								/>
+							</div>
+						</DialogContent>
+						<DialogActions>
+							<Button onClick={this.closeDialog} color="primary">
+								Close
+							</Button>
+						</DialogActions>
+					</Dialog>
+					<Dialog
+						open={this.state.showAddContact || this.state.showEditContact}
+						onClose={this.closeDialog}
+						transition={this.Transition}
+						aria-labelledby="add-edit-contact-dialog-title"
+						aria-describedby="add-edit-contact-dialog-description"
+					>
+						<DialogTitle id="add-edit-contact-dialog-title">
+							{ this.state.showAddContact ? 'Add' : 'Edit' } Contact
+						</DialogTitle>
+						<DialogContent>
+							<div id="add-edit-contact-dialog-description">
+								<ContactForm
+									loading={this.props.loading}
+									initialValues={this.state.showAddContact ? {} : this.state.currentContact}
+									currentContact={this.state.currentContact}
+									isEditing={this.state.showEditContact}
+									contacts={this.props.contacts}
+									onSaveContact={this.onSaveContact}
+								/>
+							</div>
+						</DialogContent>
+						<DialogActions>
+							<Button onClick={this.closeDialog}>
+								Close
+							</Button>
+							<Button 
+								onClick={() => this.props.dispatch(submit('ContactForm'))}
+								color="primary" 
+								variant="raised"
+							>
+								{this.state.showAddContact ? 'Save' : 'Update' }
+							</Button>
+						</DialogActions>
+					</Dialog>
+					<Dialog
+						open={this.state.showDeleteContact || this.state.showDeleteSelectedContacts}
+						onClose={this.closeDialog}
+						transition={this.Transition}
+						aria-labelledby="delete-contact-dialog-title"
+						aria-describedby="delete-contact-dialog-description"
+					>
+						<DialogTitle id="delete-contact-dialog-title">
+							{`Delete contact${this.state.showDeleteSelectedContacts ? 's' : ''}`}
+						</DialogTitle>
+						<DialogContent>
+							<div id="delete-contact-dialog-description">
+								<ReduxBlockUi tag="div" blocking={this.props.loading}>
+									{
+										this.state.showDeleteSelectedContacts
+										? <span className="delete-selected-dialog-body">Delete selected contacts?</span>
+										: <span>
+												<span className="delete-dialog-body">Are you sure?</span> <br />
+												<span>Delete {this.state.currentContact.name}?</span>
+											</span>
+									}
+								</ReduxBlockUi>
+							</div>
+						</DialogContent>
+						<DialogActions>
+							<Button onClick={this.closeDialog} color="primary">
+								Close
+							</Button>
+							<Button 
+								onClick={
+									this.state.showDeleteSelectedContacts 
+									? this.onDeleteSelectedContacts
+									: this.onDeleteContact
+								} 
+								color="secondary" 
+								variant="raised"
+							>
+								Delete
+							</Button>
+						</DialogActions>
+					</Dialog>
+				</div>
 			</div>
 		);
 	}
