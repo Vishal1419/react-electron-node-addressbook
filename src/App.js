@@ -5,7 +5,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import 'react-block-ui/style.css';
 
-import './App.css';
 import store from './store';
 import Contacts from './pages/Contacts';
 import LightTheme from './assets/themes/light';

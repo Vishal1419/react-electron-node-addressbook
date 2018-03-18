@@ -4,7 +4,6 @@ import { Form, Field, reduxForm } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 
 const ContactForm = props => {
-    const { textField, leftTextField, rightTextField } = styles;
     return (
         <ReduxBlockUi tag="div" blocking={props.loading}>
             <Form onSubmit={props.handleSubmit(props.onSaveContact)}>
@@ -13,7 +12,7 @@ const ContactForm = props => {
                     id="name"
                     name="name"
                     label="Name"
-                    style={textField}
+                    className="text-field"
                     autoFocus
                     component={TextField}
                 />
@@ -24,16 +23,16 @@ const ContactForm = props => {
                     label="Address"
                     multiline
                     rows={3}
-                    style={textField}
+                    className="text-field"
                     component={TextField}
                 />
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div className="text-fields-container">
                     <Field 
                         fullWidth
                         id="mobileNo"
                         name="mobileNo"
                         label="Mobile No"
-                        style={leftTextField}
+                        className="text-field left-text-field"
                         component={TextField}
                     />
                     <Field 
@@ -41,17 +40,17 @@ const ContactForm = props => {
                         name="email"
                         fullWidth
                         label="Email"
-                        style={rightTextField}
+                        className="text-field right-text-field"
                         component={TextField}
                     />
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div className="text-fields-container">
                     <Field 
                         id="village"
                         name="village"
                         fullWidth
                         label="Village"
-                        style={leftTextField}
+                        className="text-field left-text-field"
                         component={TextField}
                     />
                     <Field 
@@ -59,17 +58,17 @@ const ContactForm = props => {
                         name="taluka"
                         fullWidth
                         label="Taluka"
-                        style={rightTextField}
+                        className="text-field right-text-field"
                         component={TextField}
                     />
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div className="text-fields-container">
                     <Field 
                         id="district"
                         name="district"
                         fullWidth
                         label="District"
-                        style={leftTextField}
+                        className="text-field left-text-field"
                         component={TextField}
                     />
                     <Field 
@@ -77,7 +76,7 @@ const ContactForm = props => {
                         name="pincode"
                         fullWidth
                         label="Pin Code"
-                        style={rightTextField}
+                        className="text-field right-text-field"
                         component={TextField}
                     />
                 </div>
@@ -85,23 +84,6 @@ const ContactForm = props => {
         </ReduxBlockUi>
     );
 }
-
-const styles = {
-    textField: {
-        marginTop: 10,
-        marginBottom: 10,
-    },
-    leftTextField: {
-        marginTop: 10,
-        marginBottom: 10,
-        marginRight: 10,
-    },
-    rightTextField: {
-        marginTop: 10,
-        marginBottom: 10,
-        marginLeft: 10,
-    },
-};
 
 const validate = (values = {}, props) => {
 	const errors = {};

@@ -6,6 +6,7 @@ import Slide from 'material-ui/transitions/Slide';
 import { submit, reset } from 'redux-form';
 import ReduxBlockUi from 'react-block-ui/redux';
 
+import './Contacts.css';
 import Contacts from './Contacts';
 import { 
 	getAllContactsFunction, 
@@ -270,7 +271,7 @@ class ContactsContainer extends Component {
 					aria-labelledby="contact-details-dialog-title"
 					aria-describedby="contact-details-dialog-description"
 				>
-					<DialogTitle id="contact-details-dialog-title">Contact Details</DialogTitle>
+					{/* <DialogTitle id="contact-details-dialog-title">Contact Details</DialogTitle> */}
 					<DialogContent>
 						<div id="contact-details-dialog-description">
 							<ContactDetails
@@ -335,9 +336,9 @@ class ContactsContainer extends Component {
 							<ReduxBlockUi tag="div" blocking={this.props.loading}>
 								{
 									this.state.showDeleteSelectedContacts
-									? <span style={{ marginRight: 150 }}>Delete selected contacts?</span>
+									? <span className="delete-selected-dialog-body">Delete selected contacts?</span>
 									: <span>
-											<span style={{ marginRight: 200 }}>Are you sure?</span> <br />
+											<span className="delete-dialog-body">Are you sure?</span> <br />
 											<span>Delete {this.state.currentContact.name}?</span>
 										</span>
 								}

@@ -5,28 +5,26 @@ import EmailIcon from 'material-ui-icons/Email';
 import LocationIcon from 'material-ui-icons/LocationOn';
 
 const ContactDetails = props => { 
-    const { nameStyle, sideBySide, phoneIconStyle, phoneStyle, emailIconStyle,
-            sideBySideStart, locationIconStyle } = styles;
     const { loading, currentContact } = props;
     const { name, address, mobileNo, email, village, taluka, district, pincode } = currentContact;
     return (
         <ReduxBlockUi tag="div" blocking={loading}>
-            <div style={nameStyle}>{name}</div>
-            <div style={sideBySide}>
-                <div style={sideBySide}>
-                    <PhoneIcon style={phoneIconStyle} />
-                    <span style={phoneStyle}>{mobileNo}</span>
+            <div className="contact-name">{name}</div>
+            <div className="side-by-side-space-between-end">
+                <div className="side-by-side-space-between-end">
+                    <PhoneIcon className="contact-detail-icon" />
+                    <span className="contact-phone">{mobileNo}</span>
                 </div>
-                <div style={sideBySide}>
-                    {email && <EmailIcon style={emailIconStyle} />}
+                <div className="side-by-side-space-between-end">
+                    {email && <EmailIcon className="contact-detail-icon" />}
                     <span>{email ? email : ''}</span>
                 </div>
             </div>
             <br />
-            <div style={sideBySideStart}>
+            <div className="side-by-side-start">
                 {
                     (address || village || taluka || district || pincode) &&
-                    <LocationIcon style={locationIconStyle} />
+                    <LocationIcon className="contact-location-icon" />
                 }
                 <div>
                     <p>{address ? address : ''}</p>
@@ -35,7 +33,7 @@ const ContactDetails = props => {
                             `
                                 ${village ? village : ''}${village && (taluka || district) ? ', ' : ''}
                                 ${taluka ? taluka : ''}${taluka && district ? ', ' : ''}
-                                ${district ? district : ''}${(village || taluka || district) ? ' - ' : ''}
+                                ${district ? district : ''}${((village || taluka || district) && pincode) ? ' - ' : ''}
                                 ${pincode ? pincode: ''}
                             `
                         }
@@ -45,33 +43,5 @@ const ContactDetails = props => {
         </ReduxBlockUi>
     );
 }
-
-const styles = {
-    nameStyle: {
-        fontSize: 48,
-    },
-    sideBySide: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end'
-    },
-    phoneIconStyle: {
-        marginRight: 5,
-    },
-    phoneStyle: {
-        marginRight: 20,
-    },
-    emailIconStyle: {
-        marginRight: 5,
-    },
-    sideBySideStart: {
-        display: 'flex',
-        justifyContent: 'flex-start',
-    },
-    locationIconStyle: {
-        paddingTop: 12,
-        paddingRight: 10,
-    },
-};
 
 export default ContactDetails;

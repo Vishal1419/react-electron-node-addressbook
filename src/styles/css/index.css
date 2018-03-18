@@ -1,0 +1,120 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif; }
+
+@media print {
+  @page {
+    size: auto;
+    margin: 0mm; }
+  .no-page-break {
+    page-break-inside: avoid !important; } }
+
+.side-by-side-space_between-end {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; }
+
+.side-by-side-start {
+  display: flex;
+  justify-content: flex-start; }
+
+@media print {
+  .side-by-side-start-center {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; } }
+
+.delete-selected-dialog-body {
+  margin-right: 150px; }
+
+.delete-dialog-body {
+  margin-right: 200px; }
+
+.contacts-actions {
+  display: flex;
+  justify-content: space-between; }
+
+.search-box-wrapper {
+  margin-top: 4px; }
+  .search-box-wrapper .search-box {
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: left 5.5px top 5.5px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding-left: 36px;
+    height: 35px;
+    font-size: 14px;
+    margin-right: 10px;
+    color: #777; }
+
+.contacts-helper-button {
+  margin: 10px !important;
+  margin-top: 6px !important; }
+  .contacts-helper-button .contacts-helper-button-icon {
+    height: 24px;
+    width: 24px;
+    margin-right: 10px; }
+
+.table-header .contacts-table-header-cell {
+  display: flex;
+  align-items: center; }
+
+.table-header .contacts-table-header-cell-actions {
+  margin-left: 15px; }
+
+@media print {
+  .contacts-table-cell {
+    vertical-align: top;
+    width: 45%; }
+    .contacts-table-cell .contact-wrapper {
+      border: 1px solid black;
+      margin: 5px;
+      padding: 5px; }
+      .contacts-table-cell .contact-wrapper .contact-name {
+        font-size: 36px;
+        text-align: left; }
+      .contacts-table-cell .contact-wrapper .contact-detail-icon {
+        margin-right: 7px; }
+      .contacts-table-cell .contact-wrapper .contact-location-icon {
+        padding-top: 12px;
+        align-self: flex-start; }
+      .contacts-table-cell .contact-wrapper .contact-address-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; }
+        .contacts-table-cell .contact-wrapper .contact-address-wrapper .contact-address {
+          text-align: left;
+          align-self: flex-start; }
+        .contacts-table-cell .contact-wrapper .contact-address-wrapper .contact-address-details {
+          margin-top: -12px;
+          text-align: left;
+          align-self: flex-start; } }
+
+.text-field {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important; }
+
+.left-text-field {
+  margin-right: 10px !important; }
+
+.right-text-field {
+  margin-left: 10px !important; }
+
+.text-fields-container {
+  display: flex;
+  justify-content: space-between; }
+
+.contact-name {
+  font-size: 48px; }
+
+.contact-detail-icon {
+  margin-right: 5px; }
+
+.contact-phone {
+  margin-right: 20px; }
+
+.contact-location-icon {
+  padding-top: 12px;
+  padding-right: 10px; }

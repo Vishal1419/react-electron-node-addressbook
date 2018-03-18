@@ -17,6 +17,7 @@ import Color from '../Color';
 import ExcelIcon from '../../assets/icons/excel';
 import PDFIcon from '../../assets/icons/pdf';
 import WifiIcon from '../../assets/icons/wifi';
+import PrintContacts from './PrintContacts';
 
 const Contacts = props => {
 	const columns = [
@@ -27,25 +28,16 @@ const Contacts = props => {
 	]
 	return (
 		<ReduxBlockUi tag="div" blocking={props.loading}>
-			<Paper>
-				<div style={{ display: 'flex', justifyContent: 'space-between' }}>
+			<Paper id="react-no-print">
+				<div className="contacts-actions">
 					<div>
 					</div>
-					<div style={{ marginTop: 4 }}>
+					<div className="search-box-wrapper">
 						<input
 							placeholder="Search..."
+							className="search-box"
 							style={{ 
-								background: `url(${require('../../assets/icons/search.svg')})`, 
-								backgroundSize: '24px 24px',
-								backgroundRepeat: 'no-repeat',
-								backgroundPosition: 'left 5.5px top 5.5px',
-								border: '1px solid #ddd', 
-								borderRadius: 2,
-								paddingLeft: 36,
-								height: 35,
-								fontSize: 14,
-								marginRight: 10,
-								color: '#777',
+								backgroundImage: `url(${require('../../assets/icons/search.svg')})`, 
 							}}
 							value={props.searchTerm}
 							onChange={props.setSearchTerm}
@@ -54,12 +46,12 @@ const Contacts = props => {
 							<Button 
 								color="primary" 
 								variant="raised" 
-								style={{ margin: 10, marginTop: 6 }}
+								className="contacts-helper-button"
 								disabled={props.selectedContacts.length <= 0}
 								onClick={() => {}}
 							>
 								<ExcelIcon 
-									style={{ height: 24, width: 24, marginRight: 10 }} 
+									className="contacts-helper-button-icon"
 									fill={props.selectedContacts.length <= 0 ? '#a6a6a6': '#fff'}
 								/>
 								Import from Excel
@@ -69,27 +61,27 @@ const Contacts = props => {
 							<Button 
 								color="primary" 
 								variant="raised" 
-								style={{ margin: 10, marginTop: 6 }}
+								className="contacts-helper-button"
 								disabled={props.selectedContacts.length <= 0}
 								onClick={() => {}}
 							>
 								<ExcelIcon 
-									style={{ height: 24, width: 24, marginRight: 10 }} 
+									className="contacts-helper-button-icon"
 									fill={props.selectedContacts.length <= 0 ? '#a6a6a6': '#fff'}
 								/>
-							Export to Excel
+								Export to Excel
 							</Button>
 						</Color>
 						<Color color="pdf">
 							<Button 
 								color="primary" 
 								variant="raised" 
-								style={{ margin: 10, marginTop: 6 }}
+								className="contacts-helper-button"
 								disabled={props.selectedContacts.length <= 0}
 								onClick={() => {}}
 							>
 								<PDFIcon 
-									style={{ height: 24, width: 24, marginRight: 10 }} 
+									className="contacts-helper-button-icon"
 									fill={props.selectedContacts.length <= 0 ? '#a6a6a6': '#fff'}
 								/>
 								Export to PDF
@@ -99,28 +91,27 @@ const Contacts = props => {
 							<Button 
 								color="primary" 
 								variant="raised" 
-								style={{ margin: 10, marginTop: 6 }}
+								className="contacts-helper-button"
 								disabled={props.selectedContacts.length <= 0}
 								onClick={() => {}}
 							>
 								<WifiIcon 
-									style={{ height: 24, width: 24, marginRight: 10 }} 
+									className="contacts-helper-button-icon"
 									fill={props.selectedContacts.length <= 0 ? '#a6a6a6': '#fff'}
 								/>
-							Sync Online
+								Sync Online
 							</Button>
 						</Color>
 						<Color color="print">
 							<Button 
 								color="primary" 
 								variant="raised" 
-								style={{ margin: 10, marginTop: 6 }}
+								className="contacts-helper-button"
 								disabled={props.selectedContacts.length <= 0}
-								onClick={() => {}}
+								onClick={() => {window.print()}}
 							>
 								<PrintIcon 
-									style={{ height: 24, width: 24, marginRight: 10 }} 
-									fill={props.selectedContacts.length <= 0 ? '#a6a6a6': '#fff'}
+									className="contacts-helper-button-icon"
 								/>
 								Print
 							</Button>
@@ -128,20 +119,20 @@ const Contacts = props => {
 						<Button 
 							color="secondary" 
 							variant="raised" 
-							style={{ margin: 10, marginTop: 6 }}
+							className="contacts-helper-button"
 							disabled={props.selectedContacts.length <= 0}
 							onClick={props.deleteSelectedContacts}
 						>
-							<DeleteIcon style={{ marginRight: 10 }} />
+							<DeleteIcon className="contacts-helper-button-icon" />
 							Delete
 						</Button>
 						<Button 
 							color="primary" 
 							variant="raised" 
-							style={{ margin: 10, marginTop: 6 }}
+							className="contacts-helper-button"
 							onClick={props.addContactDetails}
 						>
-							<AddIcon style={{ marginRight: 10 }} />
+							<AddIcon className="contacts-helper-button-icon" />
 							Add New
 						</Button>
 					</div>
@@ -168,8 +159,8 @@ const Contacts = props => {
 									<TableCell key={column.name}>
 										<div
 											onClick={() => props.sortColumn(column.name)}
-											style={{ display: 'flex', alignItems: 'center' }}
-										>
+											className="contacts-table-header-cell"
+											>
 											{column.value}
 											{
 												props.columnToSort === column.name
@@ -183,7 +174,7 @@ const Contacts = props => {
 								)
 							}
 							<TableCell>
-								<div style={{ marginLeft: 15 }}>
+								<div className="contacts-table-header-cell-actions">
 									Actions
 								</div>
 							</TableCell>
@@ -243,6 +234,9 @@ const Contacts = props => {
 					</TableBody>
 				</Table>
 			</Paper>
+			<div id="print-mount">
+				<PrintContacts selectedContacts={props.selectedContacts} />
+			</div>
 		</ReduxBlockUi>
 	);
 }
