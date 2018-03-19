@@ -37,31 +37,32 @@
   .contacts-table-header-cell-actions
     margin-left: 15px
 
-@media print	
-  .contacts-table-cell
-    vertical-align: top
-    width: 45%
-    .contact-wrapper
+@media print
+  .print-body
+    border-spacing: 10px
+    .contacts-table-cell
+      vertical-align: top
+      width: 45%
       border: 1px solid black
-      margin: 5px
-      padding: 5px
-      .contact-name
-        font-size: 36px
-        text-align: left	
-      .contact-detail-icon
-        margin-right: 7px
-      .contact-location-icon
-        padding-top: 12px
-        align-self: flex-start
-      .contact-address-wrapper
-        display: flex
-        flex-direction: column
-        justify-content: flex-start	
-        margin-left: -12px
-        .contact-address
-          text-align: left
+      .contact-wrapper
+        margin: 5px
+        .contact-name
+          font-size: 36px
+          text-align: left	
+        .contact-detail-icon
+          margin-right: 7px
+        .contact-location-icon
+          padding-top: 12px
           align-self: flex-start
-        .contact-address-details
-          margin-top: -12px
-          text-align: left
-          align-self: flex-start
+        .contact-address-wrapper
+          display: flex
+          flex-direction: column
+          justify-content: flex-start	
+          margin-left: -12px
+          .contact-address
+            text-align: left
+            align-self: flex-start
+          .contact-address-details
+            margin-top: -12px
+            text-align: left
+            align-self: flex-start

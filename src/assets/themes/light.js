@@ -9,9 +9,9 @@ const theme = createMuiTheme({
       contrastText: '#fff',
     },
     secondary: {
-      light: '#fbbcd0',
-      main: '#f50057',
-      dark: '#c51162',
+      light: '#FFEBEE',
+      main: '#F44336',
+      dark: '#D32F2F',
       contrastText: '#fff',
 		},
 		print: {
@@ -33,9 +33,9 @@ const theme = createMuiTheme({
       contrastText: '#fff',      
 		},
 		firebase: {
-      light: '#FFCCBC',
-      main: '#FF5722',
-      dark: '#D84315',
+      light: '#fbbcd0',
+      main: '#f50057',
+      dark: '#c51162',
       contrastText: '#fff',      
 		}
   },

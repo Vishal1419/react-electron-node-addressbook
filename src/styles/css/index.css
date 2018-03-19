@@ -65,33 +65,34 @@ body {
   margin-left: 15px; }
 
 @media print {
-  .contacts-table-cell {
-    vertical-align: top;
-    width: 45%; }
-    .contacts-table-cell .contact-wrapper {
-      border: 1px solid black;
-      margin: 5px;
-      padding: 5px; }
-      .contacts-table-cell .contact-wrapper .contact-name {
-        font-size: 36px;
-        text-align: left; }
-      .contacts-table-cell .contact-wrapper .contact-detail-icon {
-        margin-right: 7px; }
-      .contacts-table-cell .contact-wrapper .contact-location-icon {
-        padding-top: 12px;
-        align-self: flex-start; }
-      .contacts-table-cell .contact-wrapper .contact-address-wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        margin-left: -12px; }
-        .contacts-table-cell .contact-wrapper .contact-address-wrapper .contact-address {
-          text-align: left;
+  .print-body {
+    border-spacing: 10px; }
+    .print-body .contacts-table-cell {
+      vertical-align: top;
+      width: 45%;
+      border: 1px solid black; }
+      .print-body .contacts-table-cell .contact-wrapper {
+        margin: 5px; }
+        .print-body .contacts-table-cell .contact-wrapper .contact-name {
+          font-size: 36px;
+          text-align: left; }
+        .print-body .contacts-table-cell .contact-wrapper .contact-detail-icon {
+          margin-right: 7px; }
+        .print-body .contacts-table-cell .contact-wrapper .contact-location-icon {
+          padding-top: 12px;
           align-self: flex-start; }
-        .contacts-table-cell .contact-wrapper .contact-address-wrapper .contact-address-details {
-          margin-top: -12px;
-          text-align: left;
-          align-self: flex-start; } }
+        .print-body .contacts-table-cell .contact-wrapper .contact-address-wrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          margin-left: -12px; }
+          .print-body .contacts-table-cell .contact-wrapper .contact-address-wrapper .contact-address {
+            text-align: left;
+            align-self: flex-start; }
+          .print-body .contacts-table-cell .contact-wrapper .contact-address-wrapper .contact-address-details {
+            margin-top: -12px;
+            text-align: left;
+            align-self: flex-start; } }
 
 .text-field {
   margin-top: 10px !important;

@@ -52,7 +52,7 @@ const PrintContacts = props => {
 	rightSide = rightSide.filter(contact => contact !== false);
 	return (
 		<PrintTemplate>
-			<table>
+			<table className="print-body">
 				<tbody>
 					{
 						selectedContacts && selectedContacts.map((con, idx) =>
