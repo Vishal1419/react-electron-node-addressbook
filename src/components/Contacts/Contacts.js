@@ -92,12 +92,12 @@ const Contacts = props => {
 								color="primary" 
 								variant="raised" 
 								className="contacts-helper-button"
-								disabled={props.selectedContacts.length <= 0}
+								disabled={!props.isOnline}
 								onClick={() => {}}
 							>
 								<WifiIcon 
 									className="contacts-helper-button-icon"
-									fill={props.selectedContacts.length <= 0 ? '#a6a6a6': '#fff'}
+									fill={!props.isOnline ? '#a6a6a6': '#fff'}
 								/>
 								Sync Online
 							</Button>

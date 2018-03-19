@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "concurrently": "^3.5.1",
+    "is-offline": "^2.1.0",
     "material-ui": "^1.0.0-beta.36",
     "material-ui-icons": "^1.0.0-beta.36",
     "node-sass-chokidar": "^1.1.2",

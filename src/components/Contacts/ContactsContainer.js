@@ -6,7 +6,6 @@ import Slide from 'material-ui/transitions/Slide';
 import { submit, reset } from 'redux-form';
 import ReduxBlockUi from 'react-block-ui/redux';
 
-import './Contacts.css';
 import Contacts from './Contacts';
 import { 
 	getAllContactsFunction, 
@@ -221,6 +220,7 @@ class ContactsContainer extends Component {
 		return (
 			<div>
 				<Contacts
+					isOnline={this.props.isOnline}
 					loading={this.props.loading} 
 					contacts={
 						orderBy(
