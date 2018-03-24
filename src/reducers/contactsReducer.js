@@ -10,9 +10,10 @@ const initialState = {
 export default function contacts(state = initialState, action) {
     switch (action.type) {
         case types.GET_ALL_CONTACTS_SUCCESS:
+            console.log('contacts error')
             return {
                 ...state,
-                contacts: action.payload,
+                contacts: action.payload.contacts,
                 requestState: RequestStates.success,
                 contactsError: null,
             };    
@@ -27,13 +28,13 @@ export default function contacts(state = initialState, action) {
             return {
                 ...state,
                 contacts: [],
-                requestState:  RequestStates.failure,
-                contactsError: action.payload,
-            };   
+                requestState: RequestStates.failure,
+                contactsError: `${action.payload.statusCode}: ${action.payload.error ? action.payload.error : 'Unknown server error'}`,
+            };
         case types.CREATE_CONTACT_SUCCESS:
             return {
                 ...state,
-                contacts: [...state.contacts, action.payload],
+                contacts: [...state.contacts, action.payload.contact],
                 requestState: RequestStates.success,
                 contactsError: null,
             };   
@@ -47,12 +48,12 @@ export default function contacts(state = initialState, action) {
             return {
                 ...state,
                 requestState: RequestStates.failure,
-                contactsError: action.payload,
+                contactsError: `${action.payload.statusCode}: ${action.payload.error ? action.payload.error : 'Unknown server error'}`,
             };   
         case types.UPDATE_CONTACT_SUCCESS:
             return {
                 ...state,
-                contacts: [...state.contacts.map(contact => contact.id === action.payload.id ? action.payload : contact )],
+                contacts: [...state.contacts.map(contact => contact._id === action.payload.contact._id ? action.payload.contact : contact )],
                 requestState: RequestStates.success,
                 contactsError: null,
             };
@@ -66,13 +67,12 @@ export default function contacts(state = initialState, action) {
             return {
                 ...state,
                 requestState: RequestStates.failure,
-                contactsError: action.payload,
+                contactsError: `${action.payload.statusCode}: ${action.payload.error ? action.payload.error : 'Unknown server error'}`,
             };
         case types.DELETE_CONTACT_SUCCESS:
-            console.log(action.payload);
             return {
                 ...state,
-                contacts: [...state.contacts.filter(contact => contact.id !== action.payload)],
+                contacts: [...state.contacts.filter(contact => contact._id !== action.payload.contact._id)],
                 requestState: RequestStates.success,
                 contactsError: null,
             };   
@@ -86,7 +86,7 @@ export default function contacts(state = initialState, action) {
             return {
                 ...state,
                 requestState: RequestStates.failure,
-                contactsError: action.payload,
+                contactsError: `${action.payload.statusCode}: ${action.payload.error ? action.payload.error : 'Unknown server error'}`,
             };   
         default:
             return state;

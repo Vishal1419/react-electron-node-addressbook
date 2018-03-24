@@ -85,7 +85,7 @@ class ContactsContainer extends Component {
 			});
 		} else {
 			this.setState({
-				selectedContacts: [...this.state.selectedContacts.filter(c => c.id !== contact.id)]
+				selectedContacts: [...this.state.selectedContacts.filter(c => c._id !== contact._id)]
 			});
 		}
 	}
@@ -173,7 +173,7 @@ class ContactsContainer extends Component {
 	}
 
 	onDeleteContact() {
-		this.props.deleteContact(this.state.currentContact.id).then(() => {
+		this.props.deleteContact(this.state.currentContact).then(() => {
 			if (!this.props.contactsError) {
 				Toast.success('Contact deleted', 'Success');
 				this.closeDialog();
@@ -186,7 +186,7 @@ class ContactsContainer extends Component {
 	}
 
 	onDeleteSelectedContacts() {
-		Promise.all(this.state.selectedContacts.map(contact => this.props.deleteContact(contact.id))).then(() => {
+		Promise.all(this.state.selectedContacts.map(contact => this.props.deleteContact(contact))).then(() => {
 			if (!this.props.contactsError) {
 				Toast.success('Selected contacts deleted', 'Success');
 				this.closeDialog();
@@ -219,6 +219,7 @@ class ContactsContainer extends Component {
 	render() {
 		return (
 			<div>
+				{console.log(this.props.contacts)}
 				<Contacts
 					isOnline={this.props.isOnline}
 					loading={this.props.loading} 
@@ -226,7 +227,7 @@ class ContactsContainer extends Component {
 						orderBy(
 							this.props.contacts.filter(
 								contact => {
-									const sTerm = this.state.searchTerm.toLocaleLowerCase();
+									const sTerm = this.state.searchTerm ? this.state.searchTerm.toLocaleLowerCase() : '';
 									return contact.name.toLocaleLowerCase().includes(sTerm)
 											|| contact.mobileNo.toLocaleLowerCase().includes(sTerm)
 											|| contact.email.toLocaleLowerCase().includes(sTerm)
@@ -272,7 +273,6 @@ class ContactsContainer extends Component {
 						aria-labelledby="contact-details-dialog-title"
 						aria-describedby="contact-details-dialog-description"
 					>
-						{/* <DialogTitle id="contact-details-dialog-title">Contact Details</DialogTitle> */}
 						<DialogContent>
 							<div id="contact-details-dialog-description">
 								<ContactDetails
@@ -380,7 +380,7 @@ const mapDispatchToProps = dispatch => ({
 	getAllContacts: () => dispatch(getAllContactsFunction()),
 	createContact: (contact) => dispatch(createContactFunction(contact)),
 	updateContact: (contact) => dispatch(updateContactFunction(contact)),
-	deleteContact: (id) => dispatch(deleteContactFunction(id)),
+	deleteContact: (contact) => dispatch(deleteContactFunction(contact)),
 	dispatch,
 });
 

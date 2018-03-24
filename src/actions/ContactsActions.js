@@ -34,8 +34,8 @@ export const updateContactFunction = (contact) => createAsyncRequest({
     }
 });
 
-export const deleteContactFunction = (id) => createAsyncRequest({
-    asyncRequest: deleteContact.bind(null, id),
+export const deleteContactFunction = (contact) => createAsyncRequest({
+    asyncRequest: deleteContact.bind(null, contact),
     types: {
         success: types.DELETE_CONTACT_SUCCESS,
         error: types.DELETE_CONTACT_FAILURE,

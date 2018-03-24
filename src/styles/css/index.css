@@ -66,10 +66,12 @@ body {
 
 @media print {
   .print-body {
-    border-spacing: 10px; }
+    width: 90%;
+    border-spacing: 10px;
+    margin: 0 auto; }
     .print-body .contacts-table-cell {
       vertical-align: top;
-      width: 45%;
+      width: 50%;
       border: 1px solid black; }
       .print-body .contacts-table-cell .contact-wrapper {
         margin: 5px; }

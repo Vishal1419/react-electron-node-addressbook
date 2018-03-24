@@ -57,7 +57,7 @@ const PrintContacts = props => {
 					{
 						selectedContacts && selectedContacts.map((con, idx) =>
 							idx % 2 === 0 &&
-							<tr key={con.id} className="no-page-break">
+							<tr key={con._id} className="no-page-break">
 								{
 									renderTableCell(leftSide[Math.floor(idx/2)])
 								}

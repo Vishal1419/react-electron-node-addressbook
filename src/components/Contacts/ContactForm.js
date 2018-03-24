@@ -91,7 +91,7 @@ const validate = (values = {}, props) => {
 	if (!values.name) {
 		errors.name = 'Name is required';
 	} else if (props.isEditing 
-		? props.contacts.find(contact => contact.id !== props.currentContact.id && (contact.name.toLocaleLowerCase() === values.name.toLocaleLowerCase())) 
+		? props.contacts.find(contact => contact._id !== props.currentContact._id && (contact.name.toLocaleLowerCase() === values.name.toLocaleLowerCase())) 
 		: props.contacts.find(contact => contact.name.toLocaleLowerCase() === values.name.toLocaleLowerCase())) {
 		errors.name = 'Duplicate contact';
 	}

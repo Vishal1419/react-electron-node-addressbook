@@ -184,7 +184,7 @@ const Contacts = props => {
 						{
 							props.contacts.map(contact => (
 								<TableRow
-									key={contact.id}
+									key={contact._id}
 									hover
 									role="checkbox"
 									tabIndex={-1}
