@@ -9,9 +9,9 @@ const theme = createMuiTheme({
       contrastText: '#fff',
     },
     secondary: {
-      light: '#FFEBEE',
-      main: '#F44336',
-      dark: '#D32F2F',
+      light: '#fbbcd0',
+      main: '#f50057',
+      dark: '#c51162',
       contrastText: '#fff',
 		},
 		print: {
@@ -33,11 +33,17 @@ const theme = createMuiTheme({
       contrastText: '#fff',      
 		},
 		firebase: {
-      light: '#fbbcd0',
-      main: '#f50057',
-      dark: '#c51162',
+      light: '#FFF3E0',
+      main: '#FF9800',
+      dark: '#F57C00',
       contrastText: '#fff',      
-		}
+    },
+    view: {
+      light: '#E0F2F1',
+      main: '#009688',
+      dark: '#00796B',
+      contrastText: '#fff',      
+    }
   },
 });
 

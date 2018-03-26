@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const contactSchema = new Schema({
+  profilePic: { type: String },
   name: { type: String, required: true },
   address: { type: String },
   mobileNo: { type: String, required: true },
@@ -38,6 +39,7 @@ Contact.updateContact = (contact, callback) => {
     { "_id": contact._id },
     {
       "$set": {
+        "profilePic": contact.profilePic,
         "name": contact.name,
         "address": contact.address,
         "mobileNo": contact.mobileNo,

@@ -10,7 +10,6 @@ const initialState = {
 export default function contacts(state = initialState, action) {
     switch (action.type) {
         case types.GET_ALL_CONTACTS_SUCCESS:
-            console.log('contacts error')
             return {
                 ...state,
                 contacts: action.payload.contacts,

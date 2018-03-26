@@ -1,3 +1,44 @@
+.toggle-wrapper {
+  display: inline-block;
+  margin: 0.5em auto; }
+  .toggle-wrapper label {
+    padding: 0.3em;
+    font-size: 17px;
+    display: block; }
+
+.toggleContainer {
+  width: 100%;
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 6px; }
+  .toggleContainer .toggleOption {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    color: #807b77;
+    font-size: 1em;
+    width: auto !important;
+    padding: 5px 16px; }
+  .toggleContainer .toggleOption.selected {
+    color: #ffffff;
+    cursor: initial; }
+  .toggleContainer .toggle {
+    position: absolute;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    transition: all 0.4s ease-in-out;
+    background: #9C27B0;
+    border-radius: 6px; }
+
+.optionDisabled {
+  background: #e6e6e6;
+  cursor: no-drop !important; }
+
 body {
   margin: 0;
   padding: 0;
@@ -19,6 +60,11 @@ body {
   display: flex;
   justify-content: flex-start; }
 
+.side-by-side-start-end {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end; }
+
 @media print {
   .side-by-side-start-center {
     display: flex;
@@ -33,10 +79,16 @@ body {
 
 .contacts-actions {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee; }
+
+.multi-toggle-wrapper {
+  display: inline-block;
+  margin-right: 10px; }
 
 .search-box-wrapper {
-  margin-top: 4px; }
+  display: inline-block; }
   .search-box-wrapper .search-box {
     background-size: 24px 24px;
     background-repeat: no-repeat;
@@ -52,10 +104,28 @@ body {
 .contacts-helper-button {
   margin: 10px !important;
   margin-top: 6px !important; }
+  .contacts-helper-button.import-export-option {
+    margin: 1.5px !important;
+    display: flex;
+    justify-content: flex-start; }
+  .contacts-helper-button span {
+    pointer-events: none; }
   .contacts-helper-button .contacts-helper-button-icon {
     height: 24px;
     width: 24px;
     margin-right: 10px; }
+  .contacts-helper-button .contacts-helper-button-icon-right {
+    height: 24px;
+    width: 24px;
+    margin-left: 10px; }
+
+.icon-button {
+  margin: 10px !important;
+  margin-top: 6px !important;
+  padding: 0; }
+  .icon-button .contacts-helper-button-icon {
+    height: 24px;
+    width: 24px; }
 
 .table-header .contacts-table-header-cell {
   display: flex;
@@ -110,15 +180,54 @@ body {
   display: flex;
   justify-content: space-between; }
 
-.contact-name {
-  font-size: 48px; }
+.contact-details {
+  color: #444444; }
+  .contact-details .main-details-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #dddddd;
+    margin-bottom: 8px; }
+    .contact-details .main-details-wrapper .contact-image {
+      border: 1px solid #ddd;
+      border-radius: 100px;
+      height: 200px;
+      width: 200px; }
+    .contact-details .main-details-wrapper .contact-name {
+      font-size: 48px; }
+  .contact-details .contact-detail-line {
+    margin-bottom: 8px; }
+    .contact-details .contact-detail-line .contact-detail-icon {
+      margin-right: 5px; }
+  .contact-details .contact-location-icon {
+    padding-top: 12px;
+    padding-right: 10px; }
 
-.contact-detail-icon {
-  margin-right: 5px; }
-
-.contact-phone {
-  margin-right: 20px; }
-
-.contact-location-icon {
-  padding-top: 12px;
-  padding-right: 10px; }
+.contact-card {
+  color: #444444;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 10px;
+  min-width: 250px;
+  max-width: 275px; }
+  .contact-card .main-details-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin: 5;
+    border-bottom: 1px solid #ddd; }
+    .contact-card .main-details-wrapper .contact-image {
+      border: 1px solid #ddd;
+      border-radius: 60px;
+      height: 120px;
+      width: 120px; }
+    .contact-card .main-details-wrapper .contact-name {
+      margin: 5px;
+      color: #222222;
+      font-size: 24px; }
+  .contact-card .contact-detail-line {
+    margin: 8px; }
+  .contact-card .contact-detail-icon {
+    margin-right: 5px; }

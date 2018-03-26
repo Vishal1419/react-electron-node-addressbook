@@ -38,6 +38,9 @@ class ContactsContainer extends Component {
 			sortDirection: 'desc',
 			searchTerm: '',
 			selectedContacts: [],
+			currentView: 'profile',
+			openImportExportOptions: false,
+			importExportAnchorEl: null,
 		}
 		this.selectAllContacts = this.selectAllContacts.bind(this);
 		this.selectContact = this.selectContact.bind(this);
@@ -49,10 +52,13 @@ class ContactsContainer extends Component {
 		this.deleteContact = this.deleteContact.bind(this);
 		this.deleteSelectedContacts = this.deleteSelectedContacts.bind(this);
 		this.closeDialog = this.closeDialog.bind(this);
+		this.onChangeProfilePicture = this.onChangeProfilePicture.bind(this);
 		this.onSaveContact = this.onSaveContact.bind(this);
 		this.onSaveContactHelper = this.onSaveContactHelper.bind(this);
 		this.onDeleteContact = this.onDeleteContact.bind(this);
 		this.onDeleteSelectedContacts = this.onDeleteSelectedContacts.bind(this);
+		this.toggleView = this.toggleView.bind(this);
+		this.toggleImportExportOptions = this.toggleImportExportOptions.bind(this);
 	}
 
 	componentWillMount() {
@@ -139,11 +145,30 @@ class ContactsContainer extends Component {
 		});
 	}
 
+	getBase64(file) {
+		return new Promise((resolve, reject) => {
+			var reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload = resolve;
+			reader.onerror = reject;
+		});
+	}
+	 
+	onChangeProfilePicture(event) {
+		var file = event.target.files[0];
+		this.getBase64(file).then((res) => this.setState({
+			currentContact: {
+				...this.state.currentContact,
+				profilePic: res.target.result,
+			}
+		}));
+	}
+
 	onSaveContact(values) {
 		if (this.state.showAddContact) {
-			this.onSaveContactHelper(this.props.createContact(values));
+			this.onSaveContactHelper(this.props.createContact({...values, profilePic: this.state.currentContact.profilePic}));
 		} else {
-			this.onSaveContactHelper(this.props.updateContact(values));
+			this.onSaveContactHelper(this.props.updateContact({...values, profilePic: this.state.currentContact.profilePic}));
 		}
 	}
 
@@ -215,11 +240,23 @@ class ContactsContainer extends Component {
 	Transition(props) {
 		return <Slide direction="down" {...props} />;
 	}
-		
+
+	toggleView() {
+		this.setState({
+			currentView: this.state.currentView === 'table' ? 'profile' : 'table',
+		});
+	}
+
+	toggleImportExportOptions(event) {
+		this.setState({
+			openImportExportOptions: !this.state.openImportExportOptions,
+			importExportAnchorEl: event.target,
+		});
+	}
+
 	render() {
 		return (
 			<div>
-				{console.log(this.props.contacts)}
 				<Contacts
 					isOnline={this.props.isOnline}
 					loading={this.props.loading} 
@@ -227,7 +264,7 @@ class ContactsContainer extends Component {
 						orderBy(
 							this.props.contacts.filter(
 								contact => {
-									const sTerm = this.state.searchTerm ? this.state.searchTerm.toLocaleLowerCase() : '';
+									const sTerm = this.state.searchTerm.toLocaleLowerCase();
 									return contact.name.toLocaleLowerCase().includes(sTerm)
 											|| contact.mobileNo.toLocaleLowerCase().includes(sTerm)
 											|| contact.email.toLocaleLowerCase().includes(sTerm)
@@ -264,6 +301,11 @@ class ContactsContainer extends Component {
 					columnToSort={this.state.columnToSort}
 					sortDirection={this.state.sortDirection}
 					setSearchTerm={this.setSearchTerm}
+					toggleView={this.toggleView}
+					currentView={this.state.currentView}
+					toggleImportExportOptions={this.toggleImportExportOptions}
+					openImportExportOptions={this.state.openImportExportOptions}
+					importExportAnchorEl={this.state.importExportAnchorEl}
 				/>
 				<div id="react-no-print">
 					<Dialog
@@ -299,6 +341,7 @@ class ContactsContainer extends Component {
 						</DialogTitle>
 						<DialogContent>
 							<div id="add-edit-contact-dialog-description">
+							{console.log(this.state.currentContact)}
 								<ContactForm
 									loading={this.props.loading}
 									initialValues={this.state.showAddContact ? {} : this.state.currentContact}
@@ -306,6 +349,7 @@ class ContactsContainer extends Component {
 									isEditing={this.state.showEditContact}
 									contacts={this.props.contacts}
 									onSaveContact={this.onSaveContact}
+									onChangeProfilePicture={this.onChangeProfilePicture}
 								/>
 							</div>
 						</DialogContent>

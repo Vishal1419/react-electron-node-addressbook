@@ -19,7 +19,6 @@ export const getAllContacts = () => {
 export const createContact = (contact) => {
     const USE_MOCK = false;
     if (USE_MOCK_CALLS_FOR_ALL_API || USE_MOCK) {
-        console.log(contact);
         const newContact = contact;
         newContact._id = Math.random() * 1000;
         return mockRequest({

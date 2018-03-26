@@ -25,7 +25,6 @@ export const doRequest = (url, method, token = null, body = {}, type = types.for
       }
       break;
     case types.json:
-      console.log('type is json')
       options.headers.Accept = 'application/json';
       options.headers['Content-Type'] = 'application/json';
       if (!['GET', 'HEAD'].includes(method)) {
@@ -39,7 +38,6 @@ export const doRequest = (url, method, token = null, body = {}, type = types.for
         for (let item in body) {
           data.append(item, body[item]);
         }
-        console.log(data);
         options.body = data;
       }
       break;

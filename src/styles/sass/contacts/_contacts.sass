@@ -7,9 +7,15 @@
 .contacts-actions
   display: flex
   justify-content: space-between
+  align-items: center
+  border-bottom: 1px solid #eee
 
+.multi-toggle-wrapper
+  display: inline-block
+  margin-right: 10px
 .search-box-wrapper
-  margin-top: 4px
+  // margin-top: 4px
+  display: inline-block
   .search-box
     background-size: 24px 24px
     background-repeat: no-repeat
@@ -25,10 +31,28 @@
 .contacts-helper-button
   margin: 10px !important
   margin-top: 6px !important
+  &.import-export-option
+    margin: 1.5px !important
+    display: flex
+    justify-content: flex-start
+  span
+    pointer-events: none
   .contacts-helper-button-icon
     height: 24px
     width: 24px
     margin-right: 10px
+  .contacts-helper-button-icon-right
+    height: 24px
+    width: 24px
+    margin-left: 10px
+  
+.icon-button
+  margin: 10px !important
+  margin-top: 6px !important
+  padding: 0
+  .contacts-helper-button-icon
+    height: 24px
+    width: 24px
 
 .table-header
   .contacts-table-header-cell

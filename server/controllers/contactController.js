@@ -28,6 +28,7 @@ module.exports = {
 	createContact: (request, response) => {
 		const appResponse = new AppResponse(response);
 		const contactToCreate = {
+			profilePic: request.body.profilePic,
 			name: request.body.name,
 			address: request.body.address,
 			mobileNo: request.body.mobileNo,
@@ -52,6 +53,7 @@ module.exports = {
 		const appResponse = new AppResponse(response);
 		const contactToUpdate = {
 			_id: request.params.id,
+			profilePic: request.body.profilePic,
 			name: request.body.name,
 			address: request.body.address,
 			mobileNo: request.body.mobileNo,
