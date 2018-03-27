@@ -30,7 +30,7 @@ class AppResponse {
   
 AppResponse.SUCCESS_CODE = 1000;
 AppResponse.UNKNOWN_ERROR = 1001;
-AppResponse.DATABASE_ERROR = 1002;
+// reserved 1002 and 1003 for future use
 AppResponse.INVALID_DATA_TYPE = 1004;
 AppResponse.REQUIRED_FIELD = 1005;
 AppResponse.PATTERN_NOT_MATCH = 1006;

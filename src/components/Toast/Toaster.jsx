@@ -5,7 +5,6 @@ import ErrorIcon from 'material-ui-icons/BugReport';
 import WarningIcon from 'material-ui-icons/Warning';
 import InformationIcon from 'material-ui-icons/Info';
 
-import './Toast.css';
 import Toast from './Toast.jsx';
 
 let toastId = null;
