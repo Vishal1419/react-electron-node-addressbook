@@ -40,10 +40,9 @@ const Contacts = props => {
 					<div>
 						{
 							props.currentView === 'profile' &&
-							<div style={{ marginLeft: 13, marginTop: 16 }}>
+							<div className="select-all">
 								<Checkbox
 									id="select-all-checkbox"
-									style={{ marginTop: -4 }}
 									indeterminate={
 										props.selectedContacts.length > 0 &&
 										props.selectedContacts.length < props.contacts.length
@@ -54,7 +53,7 @@ const Contacts = props => {
 									}
 									onChange={(evt, checked) => props.selectAllContacts(evt, checked, props.contacts)}
 								/>
-								<label htmlFor="select-all-checkbox" style={{ marginLeft: -10 }}>
+								<label htmlFor="select-all-checkbox" className="select-all-label">
 									{
 										props.contacts.length !== 0 && 
 										props.selectedContacts.length === props.contacts.length
@@ -64,8 +63,8 @@ const Contacts = props => {
 							</div>
 						}
 					</div>
-					<div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-						<div className="multi-toggle-wrapper">
+					<div className="side-by-side-center-center">
+						<div className="multi-toggle-content">
 							<MultiToggle
 								options={[
 									{ displayName: <ListIcon />, value: 'table' },
@@ -125,19 +124,18 @@ const Contacts = props => {
 								onClick={props.toggleImportExportOptions}
 							>
 								<ImportExportIcon 
-									className="contacts-helper-button-icon"
-									style={{ pointerEvents: 'none' }}
+									className="contacts-helper-button-icon click-through"
 									fill={props.selectedContacts.length <= 0 ? '#a6a6a6': '#fff'}
 								/>
-								<span style={{ pointerEvents: 'none' }}>Import / Export</span>
+								<span className="click-through">Import / Export</span>
 								<KeyBoardArrowDownIcon
-									className="contacts-helper-button-icon-right"
-									style={{ pointerEvents: 'none' }}
+									className="contacts-helper-button-icon-right click-through"
 									fill={props.selectedContacts.length <= 0 ? '#a6a6a6': '#fff'}
 								/>
 							</Button>
 						</Color>
 						<Popover
+							className="import-export-popover"
 							open={props.openImportExportOptions}
 							anchorEl={props.importExportAnchorEl}
 							onClose={props.toggleImportExportOptions}
@@ -150,7 +148,7 @@ const Contacts = props => {
 								horizontal: 'left',
 							}}
 						>
-							<div style={{ display: 'flex', flexDirection: 'column' }}>
+							<div className="popover-content">
 								<Color color="pdf">
 									<Button 
 										color="primary" 
@@ -316,33 +314,31 @@ const Contacts = props => {
 						</Table>
 					)
 					: (
-						<div style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'flex-start', alignItems: 'stretch' }}>
+						<div className="side-by-side-start-stretch contacts-profile-view">
 							{
 								props.contacts.map(contact => 
-									<div key={contact._id} style={{ margin: 10, display: 'flex' }}>
+									<div key={contact._id} className="contact-profile-view">
 										<ContactCard  
 											contact={contact}
 											leftActions={
 												<Checkbox
-													style={{ height: 24, width: 24 }}												
+													className="contact-profile-view-action"
 													checked={props.selectedContacts.indexOf(contact) !== -1}
 													onClick={evt => props.selectContact(evt, contact)}
 												/>
 											}
 											rightActions={
-												<div style={{ display: 'flex', flexDirection: 'column' }}>
+												<div className="contact-profile-view-actions">
 													<IconButton 
 														color="primary" 
-														className={props.classes.button}
-														style={{ height: 24, width: 24, marginBottom: 8 }}
+														className={`${props.classes.button} contact-profile-view-action`}
 														onClick={event => props.editContactDetails(event, contact)} 
 													>
 														<EditIcon />
 													</IconButton>
 													<IconButton 
 														color="secondary" 
-														className={props.classes.button}
-														style={{ height: 24, width: 24 }}
+														className={`${props.classes.button} contact-profile-view-action`}
 														onClick={event => props.deleteContact(event, contact)} 
 													>
 														<DeleteIcon />

@@ -9,24 +9,35 @@
   justify-content: space-between
   align-items: center
   border-bottom: 1px solid #eee
+  .select-all
+    margin-left: 13px
+    margin-top: 16px
+    > span
+      margin-top: -4px
+    .select-all-label
+      margin-left: -10px
+  .side-by-side-center-center
+    .multi-toggle-content
+      display: inline-block
+      margin-right: 10px
+    .search-box-wrapper
+      display: inline-block
+      .search-box
+        background-size: 24px 24px
+        background-repeat: no-repeat
+        background-position: left 5.5px top 5.5px
+        border: 1px solid #ddd
+        border-radius: 2px
+        padding-left: 36px
+        height: 35px
+        font-size: 14px
+        margin-right: 10px
+        color: #777
 
-.multi-toggle-wrapper
-  display: inline-block
-  margin-right: 10px
-.search-box-wrapper
-  // margin-top: 4px
-  display: inline-block
-  .search-box
-    background-size: 24px 24px
-    background-repeat: no-repeat
-    background-position: left 5.5px top 5.5px
-    border: 1px solid #ddd
-    border-radius: 2px
-    padding-left: 36px
-    height: 35px
-    font-size: 14px
-    margin-right: 10px
-    color: #777
+.import-export-popover
+  .popover-content
+    display: flex
+    flex-direction: column
 
 .contacts-helper-button
   margin: 10px !important
@@ -45,7 +56,7 @@
     height: 24px
     width: 24px
     margin-left: 10px
-  
+
 .icon-button
   margin: 10px !important
   margin-top: 6px !important
@@ -60,6 +71,22 @@
     align-items: center
   .contacts-table-header-cell-actions
     margin-left: 15px
+
+.contacts-profile-view
+  flex-wrap: wrap
+  .contact-profile-view
+    margin: 10px
+    display: flex
+    .contact-profile-view-action
+      height: 24px
+      width: 24px
+    .contact-profile-view-actions
+      display: flex
+      flex-direction: column
+      .contact-profile-view-action
+        height: 24px
+        width: 24px
+        margin-bottom: 8px
 
 @media print
   .print-body

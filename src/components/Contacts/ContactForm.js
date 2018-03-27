@@ -14,13 +14,13 @@ class ContactForm extends Component {
                         <input
                             type="file"
                             ref={(ref) => this.image = ref}
-                            style={{display: 'none'}}
+                            className="hidden"
                             onChange={this.props.onChangeProfilePicture}
                         />
                         <img 
                             src={this.props.currentContact ? this.props.currentContact.profilePic || ProfilePic : ProfilePic} 
                             alt="Profile" 
-                            style={{ height: 120, width: 120, borderRadius: 60, margin: 'auto 20px auto 10px', cursor: 'pointer' }}
+                            className="profile-pic"
                             onClick={() => this.image.click()}
                         />
                         <div>

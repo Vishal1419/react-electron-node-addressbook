@@ -10,7 +10,7 @@ const ContactCard = props => {
     return (
         <div className="contact-card">
             <div className="main-details-wrapper">
-                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', flex: 1, width: '100%' }}>
+                <div className="contact-actions">
                     <div>
                         {props.leftActions}
                     </div>
@@ -27,7 +27,7 @@ const ContactCard = props => {
             </div>
             <div className="side-by-side-start-end contact-detail-line">
                 {email && <EmailIcon className="contact-detail-icon" />}
-                <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{email ? email : ''}</span>
+                <span className="contact-detail-email">{email ? email : ''}</span>
             </div>
             <div className="side-by-side-start contact-detail-line">
                 {
