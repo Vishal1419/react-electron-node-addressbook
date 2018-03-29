@@ -8,7 +8,7 @@ import ProfilePic from '../../assets/images/profile_pic.png';
 const ContactCard = props => { 
     const { profilePic, name, village, taluka, district, mobileNo, email, pincode } = props.contact;
     return (
-        <div className="contact-card">
+        <div className="contact-card" onClick={() => props.viewContactDetails(props.contact)}>
             <div className="main-details-wrapper">
                 <div className="contact-actions">
                     <div>
@@ -29,7 +29,7 @@ const ContactCard = props => {
                 {email && <EmailIcon className="contact-detail-icon" />}
                 <span className="contact-detail-email">{email ? email : ''}</span>
             </div>
-            <div className="side-by-side-start contact-detail-line">
+            <div className="side-by-side-start contact-detail-line contact-address-wrapper">
                 {
                     (village || taluka || district || pincode) &&
                     <LocationIcon className="contact-detail-icon" />

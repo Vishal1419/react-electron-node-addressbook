@@ -49,6 +49,7 @@ class ContactsContainer extends Component {
 		this.deleteSelectedContacts = this.deleteSelectedContacts.bind(this);
 		this.closeDialog = this.closeDialog.bind(this);
 		this.onChangeProfilePicture = this.onChangeProfilePicture.bind(this);
+		this.onRemoveProfilePicture = this.onRemoveProfilePicture.bind(this);
 		this.onSaveContact = this.onSaveContact.bind(this);
 		this.onSaveContactHelper = this.onSaveContactHelper.bind(this);
 		this.onDeleteContact = this.onDeleteContact.bind(this);
@@ -143,27 +144,39 @@ class ContactsContainer extends Component {
 	 
 	onChangeProfilePicture(event) {
 		var file = event.target.files[0];
-		getBase64(file).then((res) => this.setState({
-			currentContact: {
-				...this.state.currentContact,
-				profilePic: res.target.result,
-			}
-		}));
-	}
-
-	onSaveContact(values) {
-		if (this.state.showAddContact) {
-			this.onSaveContactHelper(this.props.createContact({...values, profilePic: this.state.currentContact.profilePic}));
-		} else {
-			this.onSaveContactHelper(this.props.updateContact({...values, profilePic: this.state.currentContact.profilePic}));
+		if (file) {
+			getBase64(file).then((res) => this.setState({
+				currentContact: {
+					...this.state.currentContact,
+					profilePic: res.target.result,
+				}
+			}));
 		}
 	}
 
-	onSaveContactHelper(promise) {
+	onRemoveProfilePicture() {
+		this.setState({
+			currentContact: {
+				...this.state.currentContact,
+				profilePic: '',
+			}
+		});
+	}
+
+	onSaveContact(componentToFocusAfterSave, values) {
+		if (this.state.showAddContact) {
+			this.onSaveContactHelper(this.props.createContact({...values, profilePic: this.state.currentContact.profilePic}), componentToFocusAfterSave);
+		} else {
+			this.onSaveContactHelper(this.props.updateContact({...values, profilePic: this.state.currentContact.profilePic}), componentToFocusAfterSave);
+		}
+	}
+
+	onSaveContactHelper(promise, componentToFocusAfterSave) {
 		promise.then(() => {
 			if (this.state.showAddContact) {
 				if (!this.props.contactsError) {
 					this.props.dispatch(reset('ContactForm'));
+					componentToFocusAfterSave.focus();
 					Toast.success('New contact added', 'Success');
 					this.setState({
 						currentContact: {}
@@ -313,6 +326,7 @@ class ContactsContainer extends Component {
 					currentContact={this.state.currentContact}
 					onSaveContact={this.onSaveContact}
 					onChangeProfilePicture={this.onChangeProfilePicture}
+					onRemoveProfilePicture={this.onRemoveProfilePicture}
 					onDeleteContact={this.onDeleteContact}
 					onDeleteSelectedContacts={this.onDeleteSelectedContacts}
 					dispatch={this.props.dispatch}

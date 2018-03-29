@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReduxBlockUi from 'react-block-ui/redux';
 import { Form, Field, reduxForm } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
+import Button from 'material-ui/Button';
+import DeleteIcon from 'material-ui-icons/Delete';
 
 import ProfilePic from '../../assets/images/profile_pic.png';
 
@@ -9,7 +11,7 @@ class ContactForm extends Component {
     render() {
         return (
             <ReduxBlockUi tag="div" blocking={this.props.loading}>
-                <Form onSubmit={this.props.handleSubmit(this.props.onSaveContact)}>
+                <Form onSubmit={this.props.handleSubmit((values) => this.props.onSaveContact(this.nameInput, values))}>
                     <div className="text-fields-container">
                         <input
                             type="file"
@@ -17,12 +19,21 @@ class ContactForm extends Component {
                             className="hidden"
                             onChange={this.props.onChangeProfilePicture}
                         />
-                        <img 
-                            src={this.props.currentContact ? this.props.currentContact.profilePic || ProfilePic : ProfilePic} 
-                            alt="Profile" 
-                            className="profile-pic"
-                            onClick={() => this.image.click()}
-                        />
+                        <div className="profile-pic-wrapper">
+                            <img 
+                                src={this.props.currentContact ? this.props.currentContact.profilePic || ProfilePic : ProfilePic} 
+                                alt="Profile" 
+                                className="profile-pic"
+                                onClick={() => this.image.click()}
+                            />
+                            {
+                                this.props.currentContact.profilePic &&
+                                <Button color="secondary" variant="fab" className="profile-pic-delete"
+                                onClick={this.props.onRemoveProfilePicture}>
+                                    <DeleteIcon className="contacts-helper-button-icon" />
+                                </Button>
+                            }
+                        </div>
                         <div>
                             <Field 
                                 fullWidth
@@ -31,6 +42,7 @@ class ContactForm extends Component {
                                 label="Name"
                                 className="text-field right-text-field"
                                 autoFocus
+                                inputRef={(ref) => this.nameInput = ref}
                                 component={TextField}
                             />
                             <Field 

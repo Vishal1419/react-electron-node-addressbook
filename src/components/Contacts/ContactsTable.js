@@ -15,7 +15,7 @@ const ContactsTable = props => {
 		{ name: 'village', value: 'Location' },
 	]
 	return (
-		<Table className="overlay-table">
+		<Table className="overlay-table slide-in-right">
 			<TableHead className="table-header">
 				<TableRow>
 					<TableCell padding="checkbox">

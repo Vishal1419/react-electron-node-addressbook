@@ -23,7 +23,7 @@ const ContactDetails = props => {
                 {email && <EmailIcon className="contact-detail-icon" />}
                 <span>{email ? email : ''}</span>
             </div>
-            <div className="side-by-side-start contact-detail-line">
+            <div className="side-by-side-start contact-detail-line contact-address-wrapper">
                 {
                     (address || village || taluka || district || pincode) &&
                     <LocationIcon className="contact-detail-icon" />

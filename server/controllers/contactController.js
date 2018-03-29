@@ -14,7 +14,7 @@ const prepareContact = request => ({
 })
 
 const prepareResponse = (originalResponse, err, responseBody) => {
-	const appResponse = new AppResponse(response);
+	const appResponse = new AppResponse(originalResponse);
 	if (err) {
 		console.error(err);
 		return appResponse.setStatusCode(AppResponse.UNKNOWN_ERROR).setResponseBody({ error: err.message }).send();

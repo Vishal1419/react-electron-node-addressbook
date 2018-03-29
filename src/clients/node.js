@@ -3,7 +3,7 @@ import contacts from '../dummy-data/contacts.json';
 import RequestTypes from '../util/request-types';
   
 const apiUrl = 'http://localhost:5000';
-const USE_MOCK_CALLS_FOR_ALL_API = true;
+const USE_MOCK_CALLS_FOR_ALL_API = false;
 
 export const getAllContacts = () => {
     const USE_MOCK = false;

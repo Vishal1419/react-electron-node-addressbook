@@ -11,9 +11,18 @@
 .text-fields-container
 	display: flex
 	justify-content: space-between
-	.profile-pic
-		height: 120px
-		width: 120px
-		border-radius: 60px
-		margin: auto 20px auto 10px
-		cursor: pointer
+	.profile-pic-wrapper
+		position: relative
+		.profile-pic
+			height: 120px
+			width: 120px
+			border-radius: 60px
+			margin: auto 20px auto 10px
+			cursor: pointer
+		.profile-pic-delete
+			position: absolute
+			top: 70px
+			right: 15px
+			height: 40px
+			width: 40px
+			border-radius: 20px

@@ -25,10 +25,20 @@ const Contacts = props => {
 					deleteSelectedContacts={props.deleteSelectedContacts}
 					isOnline={props.isOnline}
 				/>
-				{
-					props.currentView === 'table'
-					? (
-						<ContactsTable
+				<div style={{ whiteSpace: 'nowrap' }}>
+					{
+						props.currentView === 'profile'
+						? <ContactCards
+							currentView={props.currentView}
+							contacts={props.contacts}
+							selectContact={props.selectContact}
+							selectedContacts={props.selectedContacts}
+							viewContactDetails={props.viewContactDetails}
+							editContactDetails={props.editContactDetails}
+							deleteContact={props.deleteContact}
+						/>
+						: <ContactsTable
+							currentView={props.currentView}
 							contacts={props.contacts}
 							selectContact={props.selectContact}
 							selectedContacts={props.selectedContacts}
@@ -40,17 +50,8 @@ const Contacts = props => {
 							editContactDetails={props.editContactDetails}
 							deleteContact={props.editContactDetails}
 						/>
-					)
-					: (
-						<ContactCards
-							contacts={props.contacts}
-							selectContact={props.selectContact}
-							selectedContacts={props.selectedContacts}
-							editContactDetails={props.editContactDetails}
-							deleteContact={props.deleteContact}
-						/>
-					)
-				}
+					}
+				</div>
 			</div>
 			<div id="print-mount">
 				<PrintContacts selectedContacts={props.selectedContacts} />

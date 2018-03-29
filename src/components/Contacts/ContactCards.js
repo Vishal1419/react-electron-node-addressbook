@@ -7,7 +7,7 @@ import DeleteIcon from 'material-ui-icons/Delete';
 import ContactCard from './ContactCard';
 
 const ContactCards = props => (
-	<div className="side-by-side-start-stretch contacts-profile-view">
+	<div className="side-by-side-start-stretch contacts-profile-view slide-in-left">
 		{
 			props.contacts.map(contact => 
 				<div key={contact._id} className="contact-profile-view">
@@ -38,6 +38,7 @@ const ContactCards = props => (
 								</IconButton>
 							</div>
 						}
+						viewContactDetails={props.viewContactDetails}
 					/>
 				</div>
 			)

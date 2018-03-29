@@ -50,6 +50,7 @@ const ContactDialogs = props => (
                         contacts={props.contacts}
                         onSaveContact={props.onSaveContact}
                         onChangeProfilePicture={props.onChangeProfilePicture}
+                        onRemoveProfilePicture={props.onRemoveProfilePicture}
                     />
                 </div>
             </DialogContent>
