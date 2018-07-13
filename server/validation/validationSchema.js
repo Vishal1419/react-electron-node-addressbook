@@ -123,4 +123,45 @@ module.exports = {
       }
     }
   },
+  distance: {
+    type: Object,
+    unknownKeys: 'allow',
+    required: true,
+    schema: {
+      distanceX: {
+        type: Number,
+        required: true,
+        errors: {
+          type: {
+            errorCode: AppResponse.INVALID_DATA_TYPE,
+            message: constants.DISTANCEX.INVALID_DT,
+          },
+          required: {
+            errorCode: AppResponse.REQUIRED_FIELD,
+            message: constants.DISTANCEX.REQUIRED,
+          },
+        }
+      },
+      distanceY: {
+        type: Number,
+        required: true,
+        errors: {
+          type: {
+            errorCode: AppResponse.INVALID_DATA_TYPE,
+            message: constants.DISTANCEY.INVALID_DT,
+          },
+          required: {
+            errorCode: AppResponse.REQUIRED_FIELD,
+            message: constants.DISTANCEY.REQUIRED,
+          },
+        }
+      },
+    },
+    errors: {
+      required: {
+        errorCode: AppResponse.REQUIRED_FIELD,
+        message: constants.DETAILS_REQUIRED
+      }
+    }
+  },
 }

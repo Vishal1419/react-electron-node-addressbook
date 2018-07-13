@@ -25,6 +25,12 @@ const theme = createMuiTheme({
       main: '#4CAF50',
       dark: '#2E7D32',
       contrastText: '#fff',      
+    },
+    json: {
+      light: '#FFF9C4',
+      main: '#FDD835',
+      dark: '#FFC107',
+      contrastText: '#222',      
 		},
 		pdf: {
       light: '#FFEBEE',
@@ -38,11 +44,23 @@ const theme = createMuiTheme({
       dark: '#F57C00',
       contrastText: '#fff',      
     },
-    view: {
+    teal: {
       light: '#E0F2F1',
       main: '#009688',
       dark: '#00796B',
       contrastText: '#fff',      
+    },
+    lightGreen: {
+      light: '#F1F8E9',
+      main: '#8BC34A',
+      dark: '#689F38',
+      contrastText: '#333',      
+    },
+    lime: {
+      light: '#F9FBE7',
+      main: '#CDDC39',
+      dark: '#AFB42B',
+      contrastText: '#333',      
     }
   },
 });

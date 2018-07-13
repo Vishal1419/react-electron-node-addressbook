@@ -1,0 +1,67 @@
+.set-print-area-dialog-body
+  overflow: hidden
+  .cover-print-area-settings-container
+    height: 300px;
+    width: 500px;
+    overflow: auto
+    background-color: #fff8dc
+    .cover-print-area-settings-content
+      border: 1px solid black
+      display: inline-block
+      vertical-align: top
+      cursor: move
+      &:before
+        content: ""
+        position: absolute
+        top: 50%
+        left: -100vw
+        right: 100%
+        height: 1px
+        background: #eee
+      &:after
+        content: ""
+        position: absolute
+        top: -100vw
+        left: 50%
+        bottom: 100%
+        width: 1px
+        background: #eee
+      .left-ruler
+        position: absolute
+        top: 40%
+        left: -125px
+        border: 1px solid #eee
+        padding: 5px 10px
+        border-radius: 5px
+        background: white
+      .top-ruler
+        position: absolute
+        left: 33%
+        top: -70px
+        border: 1px solid #eee
+        padding: 5px 10px
+        border-radius: 5px
+        z-index: 1;
+        background: white
+      .contact-name
+        font-size: 36px
+        text-align: left	
+      .contact-detail-icon
+        margin-right: 7px
+      .contact-location-icon
+        padding-top: 12px
+        align-self: flex-start
+      .email-wrapper
+        margin-top: 5px;
+        margin-bottom: -8px;
+      .contact-address-wrapper
+        display: flex
+        flex-direction: column
+        justify-content: flex-start	
+        .contact-address
+          text-align: left
+          align-self: flex-start
+        .contact-address-details
+          margin-top: -12px
+          text-align: left
+          align-self: flex-start

@@ -368,11 +368,23 @@
 .slide-in-left {
   animation: slide-in-left 0.5s ease-out; }
 
+html {
+  height: 100%; }
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  overflow-x: hidden; }
+  height: 100%;
+  overflow: hidden; }
+
+#root {
+  height: 100%; }
+
+.App {
+  height: 100%; }
+  .App > div {
+    height: 100%; }
 
 .hidden {
   display: none; }
@@ -411,11 +423,15 @@ body {
   justify-content: space-around;
   align-items: stretch; }
 
-@media print {
-  .side-by-side-start-center {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center; } }
+.side-by-side-start-center {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; }
+
+.contacts-loader {
+  height: 100%; }
+  .contacts-loader #react-no-print {
+    height: 100%; }
 
 @media print {
   .print-body {
@@ -483,24 +499,36 @@ body {
       margin-right: 10px;
       color: #777; }
 
-.import-export-popover .popover-content {
+.popover .popover-content {
   display: flex;
   flex-direction: column; }
+  .popover .popover-content .content {
+    display: flex;
+    align-items: center; }
+    .popover .popover-content .content .content-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; }
+      .popover .popover-content .content .content-info .secondary-content {
+        font-size: 12px;
+        text-transform: none;
+        font-style: oblique;
+        margin-top: -7px; }
 
-.contacts-helper-button {
+.helper-button {
   margin: 10px !important;
   margin-top: 6px !important; }
-  .contacts-helper-button.import-export-option {
+  .helper-button.popover-option {
     margin: 1.5px !important;
     display: flex;
     justify-content: flex-start; }
-  .contacts-helper-button span {
+  .helper-button span {
     pointer-events: none; }
-  .contacts-helper-button .contacts-helper-button-icon {
+  .helper-button .helper-button-icon {
     height: 24px;
     width: 24px;
     margin-right: 10px; }
-  .contacts-helper-button .contacts-helper-button-icon-right {
+  .helper-button .helper-button-icon-right {
     height: 24px;
     width: 24px;
     margin-left: 10px; }
@@ -509,19 +537,43 @@ body {
   margin: 10px !important;
   margin-top: 6px !important;
   padding: 0; }
-  .icon-button .contacts-helper-button-icon {
+  .icon-button .helper-button-icon {
     height: 24px;
     width: 24px; }
 
-.table-header .contacts-table-header-cell {
+.table-wrapper-outer {
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
-  align-items: center; }
-
-.table-header .contacts-table-header-cell-actions {
-  margin-left: 15px; }
+  flex-direction: column;
+  height: calc(100% - 72px); }
+  .table-wrapper-outer .table-wrapper-inner {
+    flex: 1; }
+    .table-wrapper-outer .table-wrapper-inner .overlay-table {
+      overflow: overlay; }
+      .table-wrapper-outer .table-wrapper-inner .overlay-table .table-header > tr > th {
+        background-color: #ffffff;
+        z-index: 1;
+        position: sticky;
+        top: 0;
+        border: 0; }
+        .table-wrapper-outer .table-wrapper-inner .overlay-table .table-header > tr > th:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
+        .table-wrapper-outer .table-wrapper-inner .overlay-table .table-header > tr > th .contacts-table-header-cell {
+          display: flex;
+          align-items: center; }
+        .table-wrapper-outer .table-wrapper-inner .overlay-table .table-header > tr > th .contacts-table-header-cell-actions {
+          margin-left: 15px; }
 
 .contacts-profile-view {
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  height: calc(100% - 72px);
+  overflow: auto; }
   .contacts-profile-view .contact-profile-view {
     margin: 10px;
     display: flex; }
@@ -631,3 +683,71 @@ body {
     .contact-details .contact-detail-line .contact-location-icon {
       padding-top: 12px;
       padding-right: 10px; }
+
+.set-print-area-dialog-body {
+  overflow: hidden; }
+  .set-print-area-dialog-body .cover-print-area-settings-container {
+    height: 300px;
+    width: 500px;
+    overflow: auto;
+    background-color: #fff8dc; }
+    .set-print-area-dialog-body .cover-print-area-settings-container .cover-print-area-settings-content {
+      border: 1px solid black;
+      display: inline-block;
+      vertical-align: top;
+      cursor: move; }
+      .set-print-area-dialog-body .cover-print-area-settings-container .cover-print-area-settings-content:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: -100vw;
+        right: 100%;
+        height: 1px;
+        background: #eee; }
+      .set-print-area-dialog-body .cover-print-area-settings-container .cover-print-area-settings-content:after {
+        content: "";
+        position: absolute;
+        top: -100vw;
+        left: 50%;
+        bottom: 100%;
+        width: 1px;
+        background: #eee; }
+      .set-print-area-dialog-body .cover-print-area-settings-container .cover-print-area-settings-content .left-ruler {
+        position: absolute;
+        top: 40%;
+        left: -125px;
+        border: 1px solid #eee;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background: white; }
+      .set-print-area-dialog-body .cover-print-area-settings-container .cover-print-area-settings-content .top-ruler {
+        position: absolute;
+        left: 33%;
+        top: -70px;
+        border: 1px solid #eee;
+        padding: 5px 10px;
+        border-radius: 5px;
+        z-index: 1;
+        background: white; }
+      .set-print-area-dialog-body .cover-print-area-settings-container .cover-print-area-settings-content .contact-name {
+        font-size: 36px;
+        text-align: left; }
+      .set-print-area-dialog-body .cover-print-area-settings-container .cover-print-area-settings-content .contact-detail-icon {
+        margin-right: 7px; }
+      .set-print-area-dialog-body .cover-print-area-settings-container .cover-print-area-settings-content .contact-location-icon {
+        padding-top: 12px;
+        align-self: flex-start; }
+      .set-print-area-dialog-body .cover-print-area-settings-container .cover-print-area-settings-content .email-wrapper {
+        margin-top: 5px;
+        margin-bottom: -8px; }
+      .set-print-area-dialog-body .cover-print-area-settings-container .cover-print-area-settings-content .contact-address-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; }
+        .set-print-area-dialog-body .cover-print-area-settings-container .cover-print-area-settings-content .contact-address-wrapper .contact-address {
+          text-align: left;
+          align-self: flex-start; }
+        .set-print-area-dialog-body .cover-print-area-settings-container .cover-print-area-settings-content .contact-address-wrapper .contact-address-details {
+          margin-top: -12px;
+          text-align: left;
+          align-self: flex-start; }

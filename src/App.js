@@ -35,7 +35,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Provider store={store}>
+        <Provider store={store} className="theme-provider">
           <MuiThemeProvider theme={LightTheme}>
             <Contacts isOnline={this.state.isOnline} />
             <ToastContainer position="top-right" className="toastify" />

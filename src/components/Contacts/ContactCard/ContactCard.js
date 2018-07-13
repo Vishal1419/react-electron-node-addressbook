@@ -1,50 +1,60 @@
 import React from 'react';
-import ReduxBlockUi from 'react-block-ui/redux';
 import PhoneIcon from 'material-ui-icons/Phone';
 import EmailIcon from 'material-ui-icons/Email';
 import LocationIcon from 'material-ui-icons/LocationOn';
 
-import ProfilePic from '../../assets/images/profile_pic.png';
+import ProfilePic from '../../../assets/images/profile_pic.png';
+import { CONTACT_DETAILS_DIALOG } from '../../../constants/dialogNames';
 
-const ContactDetails = props => { 
-    const { loading, currentContact } = props;
-    const { profilePic, name, address, mobileNo, email, village, taluka, district, pincode } = currentContact;
+const ContactCard = props => { 
+    const { profilePic, name, village, taluka, district, mobileNo, email, pincode } = props.contact;
     return (
-        <ReduxBlockUi tag="div" blocking={loading} className="contact-details">
+        <div className="contact-card" onClick={() => props.onClick ? props.onClick(props.contact) : props.showDialog(CONTACT_DETAILS_DIALOG)}>
             <div className="main-details-wrapper">
-                <img src={profilePic || ProfilePic} alt="Profile" className="contact-image" />
+                <div className="contact-actions">
+                    <div>
+                        {props.leftActions}
+                    </div>
+                    <img src={profilePic || ProfilePic} alt="Profile" className="contact-image" />
+                    <div>
+                        {props.rightActions}
+                    </div>
+                </div>
                 <div className="contact-name">{name}</div>
             </div>
             <div className="side-by-side-start-end contact-detail-line">
                 <PhoneIcon className="contact-detail-icon" />
-                <span>{mobileNo}</span>
+                <span className="contact-phone">{mobileNo}</span>
             </div>
             <div className="side-by-side-start-end contact-detail-line">
                 {email && <EmailIcon className="contact-detail-icon" />}
-                <span>{email ? email : ''}</span>
+                <span className="contact-detail-email">{email ? email : ''}</span>
             </div>
             <div className="side-by-side-start contact-detail-line contact-address-wrapper">
                 {
-                    (address || village || taluka || district || pincode) &&
+                    (village || taluka || district || pincode) &&
                     <LocationIcon className="contact-detail-icon" />
                 }
                 <div>
-                    <span>{address ? address : ''}</span>
-                    <br />
-                    <span>
+                    <div>
                         {
                             `
                                 ${village ? village : ''}${village && (taluka || district) ? ', ' : ''}
                                 ${taluka ? taluka : ''}${taluka && district ? ', ' : ''}
+                            `
+                        }
+                        <br />
+                        {
+                            `
                                 ${district ? district : ''}${((village || taluka || district) && pincode) ? ' - ' : ''}
                                 ${pincode ? pincode: ''}
                             `
                         }
-                    </span>
+                    </div>
                 </div>
             </div>
-        </ReduxBlockUi>
+        </div>
     );
 }
 
-export default ContactDetails;
+export default ContactCard;

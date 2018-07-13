@@ -1,60 +1,26 @@
 import React from 'react';
 import ReduxBlockUi from 'react-block-ui/redux';
 
-import ContactsHeader from './ContactsHeader';
-import ContactsTable from './ContactsTable';
-import ContactCards from './ContactCards';
-import PrintContacts from './PrintContacts';
+import ContactsHeaderContainer from './ContactsHeader/ContactsHeaderContainer';
+import ContactsTableContainer from './ContactsTable/ContactsTableContainer';
+import ContactCardsContainer from './ContactCards/ContactCardsContainer';
+import PrintContactsContainer from './PrintContacts/PrintContactsContainer';
 
 const Contacts = props => {
 	return (
-		<ReduxBlockUi tag="div" blocking={props.loading}>
+		<ReduxBlockUi tag="div" className="contacts-loader" blocking={props.loading}>
 			<div id="react-no-print">
-				<ContactsHeader
-					contacts={props.contacts}
-					selectedContacts={props.selectedContacts}
-					selectAllContacts={props.selectAllContacts}
-					toggleView={props.toggleView}
-					currentView={props.currentView}
-					setSearchTerm={props.setSearchTerm}
-					searchTerm={props.searchTerm}
-					toggleImportExportOptions={props.toggleImportExportOptions}
-					openImportExportOptions={props.openImportExportOptions}
-					importExportAnchorEl={props.importExportAnchorEl}
-					addContactDetails={props.addContactDetails}
-					deleteSelectedContacts={props.deleteSelectedContacts}
-					isOnline={props.isOnline}
-				/>
+				<ContactsHeaderContainer />
 				<div style={{ whiteSpace: 'nowrap' }}>
 					{
 						props.currentView === 'profile'
-						? <ContactCards
-							currentView={props.currentView}
-							contacts={props.contacts}
-							selectContact={props.selectContact}
-							selectedContacts={props.selectedContacts}
-							viewContactDetails={props.viewContactDetails}
-							editContactDetails={props.editContactDetails}
-							deleteContact={props.deleteContact}
-						/>
-						: <ContactsTable
-							currentView={props.currentView}
-							contacts={props.contacts}
-							selectContact={props.selectContact}
-							selectedContacts={props.selectedContacts}
-							selectAllContacts={props.selectAllContacts}
-							sortColumn={props.sortColumn}
-							columnToSort={props.columnToSort}
-							sortDirection={props.sortDirection}
-							viewContactDetails={props.viewContactDetails}
-							editContactDetails={props.editContactDetails}
-							deleteContact={props.editContactDetails}
-						/>
+						? <ContactCardsContainer />
+						: <ContactsTableContainer />
 					}
 				</div>
 			</div>
 			<div id="print-mount">
-				<PrintContacts selectedContacts={props.selectedContacts} />
+				<PrintContactsContainer />
 			</div>
 		</ReduxBlockUi>
 	);

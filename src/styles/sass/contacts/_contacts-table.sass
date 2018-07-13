@@ -1,6 +1,28 @@
-.table-header
-  .contacts-table-header-cell
-    display: flex
-    align-items: center
-  .contacts-table-header-cell-actions
-    margin-left: 15px
+.table-wrapper-outer
+  overflow-y: auto
+  overflow-x: hidden;
+  display: flex
+  flex-direction: column
+  height: calc(100% - 72px)
+  .table-wrapper-inner
+    flex: 1
+    .overlay-table
+      overflow: overlay
+      .table-header > tr > th
+        background-color: #ffffff
+        z-index: 1
+        position: sticky
+        top: 0
+        border: 0
+        &:after
+          content: ''
+          position: absolute
+          left: 0
+          bottom: 0
+          width: 100%
+          border-bottom: 1px solid rgba(0,0,0,0.12)
+        .contacts-table-header-cell
+          display: flex
+          align-items: center
+        .contacts-table-header-cell-actions
+          margin-left: 15px

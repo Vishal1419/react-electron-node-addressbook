@@ -4,14 +4,14 @@ import IconButton from 'material-ui/IconButton';
 import EditIcon from 'material-ui-icons/Edit';
 import DeleteIcon from 'material-ui-icons/Delete';
 
-import ContactCard from './ContactCard';
+import ContactCardContainer from '../ContactCard/ContactCardContainer';
 
 const ContactCards = props => (
 	<div className="side-by-side-start-stretch contacts-profile-view slide-in-left">
 		{
 			props.contacts.map(contact => 
 				<div key={contact._id} className="contact-profile-view">
-					<ContactCard  
+					<ContactCardContainer
 						contact={contact}
 						leftActions={
 							<Checkbox
@@ -25,20 +25,19 @@ const ContactCards = props => (
 								<IconButton 
 									color="primary" 
 									className="contact-profile-view-action"
-									onClick={event => props.editContactDetails(event, contact)} 
+									onClick={event => props.showEditContact(event, contact)} 
 								>
 									<EditIcon />
 								</IconButton>
 								<IconButton 
 									color="secondary" 
 									className="contact-profile-view-action"
-									onClick={event => props.deleteContact(event, contact)} 
+									onClick={event => props.showDeleteContact(event, contact)} 
 								>
 									<DeleteIcon />
 								</IconButton>
 							</div>
 						}
-						viewContactDetails={props.viewContactDetails}
 					/>
 				</div>
 			)

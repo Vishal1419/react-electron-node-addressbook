@@ -5,7 +5,7 @@ import { TextField } from 'redux-form-material-ui';
 import Button from 'material-ui/Button';
 import DeleteIcon from 'material-ui-icons/Delete';
 
-import ProfilePic from '../../assets/images/profile_pic.png';
+import ProfilePic from '../../../assets/images/profile_pic.png';
 
 class ContactForm extends Component {
     render() {
@@ -30,7 +30,7 @@ class ContactForm extends Component {
                                 this.props.currentContact.profilePic &&
                                 <Button color="secondary" variant="fab" className="profile-pic-delete"
                                 onClick={this.props.onRemoveProfilePicture}>
-                                    <DeleteIcon className="contacts-helper-button-icon" />
+                                    <DeleteIcon className="helper-button-icon" />
                                 </Button>
                             }
                         </div>

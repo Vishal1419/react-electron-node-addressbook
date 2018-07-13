@@ -38,4 +38,14 @@ module.exports = {
         INVALID_DT: 'Pincode should be string',
     },
 
+    DISTANCEX: {
+        INVALID_DT: 'Distance X should be number',
+        REQUIRED: 'Distance X is required',
+    },
+
+    DISTANCEY: {
+        INVALID_DT: 'Distance Y should be number',
+        REQUIRED: 'Distance Y is required',
+    },
+
 }

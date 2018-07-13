@@ -1,10 +1,10 @@
-import * as types from '../constants/types';
 import createAsyncRequest from '../util/async-redux.js';
+import * as types from '../constants/types';
 import { 
     getAllContacts, 
     createContact, 
     updateContact, 
-    deleteContact 
+    deleteContact,
 } from '../clients/node';
 
 export const getAllContactsFunction = () => createAsyncRequest({
@@ -41,4 +41,49 @@ export const deleteContactFunction = (contact) => createAsyncRequest({
         error: types.DELETE_CONTACT_FAILURE,
         request: types.DELETE_CONTACT_LOADING
     }
+});
+
+export const selectAllContacts = () => ({
+    type: types.SELECT_ALL_CONTACTS,
+    payload: null
+});
+
+export const deselectAllContacts = () => ({
+    type: types.DESELECT_ALL_CONTACTS,
+    payload: null,
+});
+
+export const selectContact = contact => ({
+    type: types.SELECT_CONTACT,
+    payload: contact,
+});
+
+export const deselectContact = contactId => ({
+    type: types.DESELECT_CONTACT,
+    payload: contactId,
+});
+
+export const setCurrentContact = contact => ({
+    type: types.SET_CURRENT_CONTACT,
+    payload: contact,
+});
+
+export const changeCurrentContactProfilePic = profilePic => ({
+    type: types.CHANGE_CURRENT_CONTACT_PROFILE_PIC,
+    payload: profilePic,
+});
+
+export const sortContacts = key => ({
+    type: types.SORT_CONTACTS,
+    payload: key,
+});
+
+export const filterContacts = searchTerm => ({
+    type: types.FILTER_CONTACTS,
+    payload: searchTerm,
+});
+
+export const toggleContactsView = () => ({
+    type: types.TOGGLE_CONTACTS_VIEW,
+    payload: null,
 });

@@ -28,25 +28,37 @@
         margin-right: 10px
         color: #777
 
-.import-export-popover
+.popover
   .popover-content
     display: flex
     flex-direction: column
+    .content
+      display: flex
+      align-items: center
+      .content-info
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        .secondary-content
+          font-size: 12px
+          text-transform: none
+          font-style: oblique
+          margin-top: -7px
 
-.contacts-helper-button
+.helper-button
   margin: 10px !important
   margin-top: 6px !important
-  &.import-export-option
+  &.popover-option
     margin: 1.5px !important
     display: flex
     justify-content: flex-start
   span
     pointer-events: none
-  .contacts-helper-button-icon
+  .helper-button-icon
     height: 24px
     width: 24px
     margin-right: 10px
-  .contacts-helper-button-icon-right
+  .helper-button-icon-right
     height: 24px
     width: 24px
     margin-left: 10px
@@ -55,6 +67,6 @@
   margin: 10px !important
   margin-top: 6px !important
   padding: 0
-  .contacts-helper-button-icon
+  .helper-button-icon
     height: 24px
     width: 24px
